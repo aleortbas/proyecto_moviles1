@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="12"
+    android:orientation="vertical"
+    tools:context=".seleccion_registro">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="12"
+        android:weightSum="12"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="203dp"
+            android:layout_height="300dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/soccer_jersey" />
+        <TextView
+            android:id="@+id/textView"
+            android:text="Gestiona todas tus reservas en tus canchas favoritas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:text="Obten toda linformacion detallada, horarios, dispoinibilidad y promociones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center|top"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:onClick="IrEmail"
+                android:text="Registrar con email" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:onClick="IrTelefono"
+                android:text="Registrar con telefono" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
