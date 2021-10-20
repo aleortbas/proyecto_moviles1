@@ -59,8 +59,8 @@ public class RegistrarUsuario extends AppCompatActivity {
         nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
         nameValuePairs.add(new BasicNameValuePair("nombre", nombreTx.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("email", emailTx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("contraseña", contraseñaTx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("telefono", apellidoTx.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("clave", contraseñaTx.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("apellido", apellidoTx.getText().toString().trim()));
 
         boolean response = APIHandler.POST(url, nameValuePairs);
         return response;

@@ -50,25 +50,32 @@
             />
 
         <EditText
+            android:id="@+id/nombreTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Primer Nombre" />
+
+        <EditText
+            android:id="@+id/apellidoTel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Apellido" />
+
+        <EditText
             android:id="@+id/editTextPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone" />
-
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
+            android:inputType="phone"
+            android:hint="Telefono"
             />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/Passwordtel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
+            android:inputType="textVisiblePassword"
             android:hint="Contraseña"
             />
 
@@ -79,7 +86,7 @@
             android:text="Creando esta cuenta usted acepta nuestros terminos y condicciones " />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonTel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_awesome"
