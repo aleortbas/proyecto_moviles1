@@ -31,7 +31,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         apellidoTx = findViewById(R.id.apellido);
         emailTx = findViewById(R.id.email);
         contraseñaTx = findViewById(R.id.Password);
-        button = findViewById(R.id.button);
+        button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +41,10 @@ public class RegistrarUsuario extends AppCompatActivity {
                         (!emailTx.getText().toString().trim().equalsIgnoreCase("")) ||
                         (!contraseñaTx.getText().toString().trim().equalsIgnoreCase(""))){
                     new Insertar(RegistrarUsuario.this).execute();
-                }
+                } else {
 
+                    Toast.makeText(RegistrarUsuario.this, "Hay informacion por llenar", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -50,15 +52,15 @@ public class RegistrarUsuario extends AppCompatActivity {
     // CRUD from here --------
     private boolean insertar() {
 
-        String url = Constants.URL + "footbocking/addUser.php";
+        String url = Constants.URL + "footbocking/add.php";
 
         //DATOS
         List<NameValuePair> nameValuePairs; // definimos la lista de datos
-        nameValuePairs = new ArrayList<NameValuePair>(4); // tamaño del array
+        nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
         nameValuePairs.add(new BasicNameValuePair("nombre", nombreTx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("apellido", apellidoTx.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("email", emailTx.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("contraseña", contraseñaTx.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("telefono", apellidoTx.getText().toString().trim()));
 
         boolean response = APIHandler.POST(url, nameValuePairs);
         return response;

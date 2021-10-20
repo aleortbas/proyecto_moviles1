@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.FootBoocking">
+
+        <uses-library android:name ="org.apache.http.legacy" android:required ="false"/>
+
         <activity
             android:name=".Lista_canchas"
             android:exported="true" />
