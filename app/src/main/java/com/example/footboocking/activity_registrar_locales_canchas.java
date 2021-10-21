@@ -63,14 +63,14 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
 
         //DATOS
         List<NameValuePair> nameValuePairs; // definimos la lista de datos
-        nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
+        nameValuePairs = new ArrayList<NameValuePair>(8); // tamaño del array
         nameValuePairs.add(new BasicNameValuePair("nombre", nombreLocal.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("nombre_administrador", nombreAdmin.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("direccion", direccion.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("numero_canchas", numeroCanchas.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("camara_comercio", camaraComercio.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("contraseña", contraseña.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("clave", contraseña.getText().toString().trim()));
 
 
         boolean response = APIHandler.POST(url, nameValuePairs);
