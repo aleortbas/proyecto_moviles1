@@ -19,7 +19,7 @@ import java.util.List;
 
 public class RegistrarUsuario extends AppCompatActivity {
 
-    EditText nombreTx,apellidoTx,emailTx,contraseñaTx;
+    EditText nombreTx,apellidoTx,emailTx,contraseñaTx,telefonotx;
     Button button;
 
     @Override
@@ -31,6 +31,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         apellidoTx = findViewById(R.id.apellido);
         emailTx = findViewById(R.id.email);
         contraseñaTx = findViewById(R.id.Password);
+        telefonotx = findViewById(R.id.editTextPhone);
         button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
         nameValuePairs.add(new BasicNameValuePair("nombre", nombreTx.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("email", emailTx.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("telefono", telefonotx.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("clave", contraseñaTx.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("apellido", apellidoTx.getText().toString().trim()));
 

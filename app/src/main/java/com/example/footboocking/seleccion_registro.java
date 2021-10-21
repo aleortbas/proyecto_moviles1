@@ -15,7 +15,7 @@ public class seleccion_registro extends AppCompatActivity {
     }
 
     public void IrTelefono(View view) {
-        Intent IrTelefono = new Intent(this, activity_registrar_usuario_telefono.class);
+        Intent IrTelefono = new Intent(this, activity_registrar_locales_canchas.class);
         startActivity(IrTelefono);
     }
 

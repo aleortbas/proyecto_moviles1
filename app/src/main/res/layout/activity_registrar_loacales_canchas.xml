@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="12"
     android:orientation="vertical"
-    tools:context=".activity_registrar_usuario_telefono">
+    tools:context=".activity_registrar_locales_canchas">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:text="¿Usuario nuevo?"
+            android:text="¿Local nuevo?"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
@@ -39,8 +39,8 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:text="Crea una cuenta para poder reservar
-            tus canchas sinteticas"
+            android:text="Crea una cuenta para poder publicitar
+            y gestionar tus canchas sinteticas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
@@ -50,29 +50,53 @@
             />
 
         <EditText
-            android:id="@+id/nombreTel"
+            android:id="@+id/nombreLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="Primer Nombre" />
+            android:hint="Nombre Establecimento" />
 
         <EditText
-            android:id="@+id/apellidoTel"
+            android:id="@+id/nombreAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="Apellido" />
+            android:hint="Nombre Administrador" />
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:hint="Telefono"
+            android:inputType="textPostalAddress"
+            android:hint="Direccion"
             />
 
         <EditText
-            android:id="@+id/Passwordtel"
+            android:id="@+id/NumeroCanchas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="Numero de canchas"
+            />
+
+        <EditText
+            android:id="@+id/CamaraComercio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="Camara y comersio"
+            />
+
+        <EditText
+            android:id="@+id/emailLocal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            />
+
+        <EditText
+            android:id="@+id/PasswordLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textVisiblePassword"
@@ -86,7 +110,7 @@
             android:text="Creando esta cuenta usted acepta nuestros terminos y condicciones " />
 
         <Button
-            android:id="@+id/buttonTel"
+            android:id="@+id/buttonLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font_awesome"

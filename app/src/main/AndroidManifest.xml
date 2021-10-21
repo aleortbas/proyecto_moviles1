@@ -29,7 +29,7 @@
             android:name=".seleccion_registro"
             android:exported="true" />
         <activity
-            android:name=".activity_registrar_usuario_telefono"
+            android:name=".activity_registrar_locales_canchas"
             android:exported="true" />
         <activity
             android:name=".RegistrarUsuario"

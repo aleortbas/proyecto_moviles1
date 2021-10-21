@@ -71,7 +71,7 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:onClick="IrTelefono"
-                android:text="Registrar con telefono" />
+                android:text="Registrar un local" />
         </LinearLayout>
 
     </LinearLayout>
