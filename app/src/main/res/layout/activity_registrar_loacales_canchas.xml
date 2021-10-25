@@ -39,8 +39,7 @@
 
         <TextView
             android:id="@+id/textView3"
-            android:text="Crea una cuenta para poder publicitar
-            y gestionar tus canchas sinteticas"
+            android:text="Crea una cuenta para poder publicitar y gestionar tus canchas sinteticas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"

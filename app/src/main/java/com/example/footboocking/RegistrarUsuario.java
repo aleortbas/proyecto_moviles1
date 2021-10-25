@@ -98,6 +98,7 @@ public class RegistrarUsuario extends AppCompatActivity {
                         nombreTx.setText("");
                         apellidoTx.setText("");
                         emailTx.setText("");
+                        telefonotx.setText("");
                         contraseñaTx.setText("");
                     }
                 });

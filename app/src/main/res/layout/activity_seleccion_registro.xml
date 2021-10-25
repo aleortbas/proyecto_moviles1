@@ -46,33 +46,16 @@
             android:gravity="center|top"
             />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:weightSum="2"
-            android:orientation="horizontal"
-            >
-
             <Button
                 android:id="@+id/button2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:fontFamily="@font/font_awesome"
                 android:backgroundTint="@color/black"
+                android:layout_weight="1"
                 android:onClick="IrEmail"
                 android:text="Registrar con email" />
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:onClick="IrTelefono"
-                android:text="Registrar un local" />
-        </LinearLayout>
 
     </LinearLayout>
 

@@ -46,18 +46,6 @@
             android:onClick="IrRegistrar"
             />
 
-        <Button
-            android:id="@+id/googleRegi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/font_awesome"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:layout_weight="1"
-            android:text="Registrate con \uf1a0oogle"
-            android:onClick="google"
-            />
-
         <TextView
             android:id="@+id/textView6"
             android:layout_width="match_parent"
