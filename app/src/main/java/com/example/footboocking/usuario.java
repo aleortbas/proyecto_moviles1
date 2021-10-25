@@ -5,15 +5,15 @@ import org.json.JSONObject;
 
 public class usuario {
 
-    String id_user, nombre, apellido, email, telefono, contraseña;
+    String id_user, nombreDB, apellidoDB, emailDB, telefonoDB, contraseñaDB;
 
     public usuario(JSONObject objetoJSON) throws JSONException {
-        this.id_user = objetoJSON.getString("id_user");
-        this.nombre = objetoJSON.getString("nombre");
-        this.apellido = objetoJSON.getString("apellido");
-        this.email = objetoJSON.getString("email");
-        this.telefono = objetoJSON.getString("telefono");
-        this.contraseña = objetoJSON.getString("contraseña");
+        this.id_user = objetoJSON.getString("id");
+        this.nombreDB = objetoJSON.getString("nombre");
+        this.apellidoDB = objetoJSON.getString("apellido");
+        this.emailDB = objetoJSON.getString("email");
+        this.telefonoDB = objetoJSON.getString("telefono");
+        this.contraseñaDB = objetoJSON.getString("clave");
 
     }
 
@@ -21,47 +21,50 @@ public class usuario {
         return id_user;
     }
 
-    public void setId_user(String id_user) {
+    public void setId_user(String nombreDB) {
         this.id_user = id_user;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreDB() {
+        return  nombreDB;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreDB(String nombreDB) {
+        this.nombreDB = nombreDB;
     }
 
-    public String getApellido() {
-        return apellido;
+    public String getApellidoDB() {
+        return  apellidoDB;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoDB(String apellidoDB) {
+        this.apellidoDB = apellidoDB;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailDB() {
+        return  emailDB;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailDB(String emailDB) {
+        this.emailDB = emailDB;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getTelefonoDB() {
+        return  telefonoDB;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTelefonoDB(String telefonoDB) {
+        this.telefonoDB = telefonoDB;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContraseñaDB() {
+        return  contraseñaDB;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContraseñaDB(String contraseñaDB) {
+        this.contraseñaDB = contraseñaDB;
     }
+
+
+
 }
