@@ -50,18 +50,19 @@
             />
 
         <EditText
+            android:id="@+id/nombreAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Nombre Administrador" />
+
+        <EditText
             android:id="@+id/nombreLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:hint="Nombre Establecimento" />
 
-        <EditText
-            android:id="@+id/nombreAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Nombre Administrador" />
 
         <EditText
             android:id="@+id/direccion"

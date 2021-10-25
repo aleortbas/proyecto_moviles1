@@ -18,22 +18,32 @@ import java.util.List;
 
 public class activity_registrar_locales_canchas extends AppCompatActivity {
 
-    EditText nombreLocal, nombreAdmin, direccion, numeroCanchas, camaraComercio, email, contraseña;
+    EditText nombreLocal,  direccion, numeroCanchas, camaraComercio,nombreAdmintxt,emailtxt,contrseñatxt;
     Button button;
+    String nombreAdmin,email,contrseña,rol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_loacales_canchas);
 
+        nombreAdmin = getIntent().getStringExtra("nombreAdmin");
+        email = getIntent().getStringExtra("email");
+        contrseña = getIntent().getStringExtra("clave");
+        rol = getIntent().getStringExtra("rol");
+
+
         nombreLocal = findViewById(R.id.nombreLocal);
-        nombreAdmin = findViewById(R.id.nombreAdmin);
         direccion = findViewById(R.id.direccion);
         numeroCanchas = findViewById(R.id.NumeroCanchas);
         camaraComercio = findViewById(R.id.CamaraComercio);
-        email = findViewById(R.id.emailLocal);
-        contraseña = findViewById(R.id.PasswordLocal);
+        nombreAdmintxt = findViewById(R.id.nombreAdmin);
+        contrseñatxt = findViewById(R.id.PasswordLocal);
+        emailtxt = findViewById(R.id.emailLocal);
 
+        nombreAdmintxt.setText(nombreAdmin);
+        contrseñatxt.setText(contrseña);
+        emailtxt.setText(email);
 
         button = findViewById(R.id.buttonLocal);
 
@@ -41,12 +51,13 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if((!nombreLocal.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!nombreAdmin.getText().toString().trim().equalsIgnoreCase("")) ||
                         (!direccion.getText().toString().trim().equalsIgnoreCase("")) ||
                         (!numeroCanchas.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!camaraComercio.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!email.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!contraseña.getText().toString().trim().equalsIgnoreCase(""))){
+                        (!contrseñatxt.getText().toString().trim().equalsIgnoreCase("")) ||
+                        (!nombreAdmintxt.getText().toString().trim().equalsIgnoreCase("")) ||
+                        (!contrseñatxt.getText().toString().trim().equalsIgnoreCase("")) ||
+                        (!emailtxt.getText().toString().trim().equalsIgnoreCase("")) ||
+                        (!camaraComercio.getText().toString().trim().equalsIgnoreCase(""))){
                     new Insertar(activity_registrar_locales_canchas.this).execute();
                 } else {
 
@@ -65,13 +76,13 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
         List<NameValuePair> nameValuePairs; // definimos la lista de datos
         nameValuePairs = new ArrayList<NameValuePair>(8); // tamaño del array
         nameValuePairs.add(new BasicNameValuePair("nombre", nombreLocal.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("nombre_administrador", nombreAdmin.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("nombre_administrador", nombreAdmintxt.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("direccion", direccion.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("numero_canchas", numeroCanchas.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("camara_comercio", camaraComercio.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("clave", contraseña.getText().toString().trim()));
-
+        nameValuePairs.add(new BasicNameValuePair("email", emailtxt.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("clave", contrseñatxt.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("rol", rol.trim()));
 
         boolean response = APIHandler.POST(url, nameValuePairs);
         return response;
@@ -91,13 +102,13 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(context, "Usuario creado", Toast.LENGTH_LONG).show();
-                        nombreAdmin.setText("");
+                        nombreAdmintxt.setText("");
                         nombreLocal.setText("");
                         direccion.setText("");
                         numeroCanchas.setText("");
                         camaraComercio.setText("");
-                        email.setText("");
-                        contraseña.setText("");
+                        emailtxt.setText("");
+                        contrseñatxt.setText("");
                     }
                 });
             else

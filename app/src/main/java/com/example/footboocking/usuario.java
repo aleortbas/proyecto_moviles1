@@ -6,6 +6,7 @@ import org.json.JSONObject;
 public class usuario {
 
     String id_user, nombreDB, apellidoDB, emailDB, telefonoDB, contraseñaDB;
+    int rol;
 
     public usuario(JSONObject objetoJSON) throws JSONException {
         this.id_user = objetoJSON.getString("id");
@@ -14,6 +15,7 @@ public class usuario {
         this.emailDB = objetoJSON.getString("email");
         this.telefonoDB = objetoJSON.getString("telefono");
         this.contraseñaDB = objetoJSON.getString("clave");
+        this.rol = Integer.parseInt(objetoJSON.getString("rol"));
 
     }
 
@@ -65,6 +67,11 @@ public class usuario {
         this.contraseñaDB = contraseñaDB;
     }
 
+    public int getRol() {
+        return rol;
+    }
 
-
+    public void setRol(int rol) {
+        this.rol = rol;
+    }
 }

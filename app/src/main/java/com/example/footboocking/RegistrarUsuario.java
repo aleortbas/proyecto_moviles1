@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -22,6 +23,7 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     EditText nombreTx,apellidoTx,emailTx,contraseñaTx,telefonotx;
     Button button;
+    RadioButton rolAdmin, rolUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class RegistrarUsuario extends AppCompatActivity {
         emailTx = findViewById(R.id.email);
         contraseñaTx = findViewById(R.id.Password);
         telefonotx = findViewById(R.id.editTextPhone);
+        rolAdmin = findViewById(R.id.radioAdmin);
+        rolUser = findViewById(R.id.radioUser);
         button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -55,18 +59,26 @@ public class RegistrarUsuario extends AppCompatActivity {
     private boolean insertar() {
 
         String url = Constants.URL + "footbocking/add.php";
+        String rol = null;
+        if(rolAdmin.isChecked()==true){
+            rol = "1";
+        }else if(rolUser.isChecked()==true){
+            rol = "2";
+        }
+            List<NameValuePair> nameValuePairs; // definimos la lista de datos
+            nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
 
-        //DATOS
-        List<NameValuePair> nameValuePairs; // definimos la lista de datos
-        nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
-        nameValuePairs.add(new BasicNameValuePair("nombre", nombreTx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("email", emailTx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("telefono", telefonotx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("clave", contraseñaTx.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("apellido", apellidoTx.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("nombre", nombreTx.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("email", emailTx.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("telefono", telefonotx.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("clave", contraseñaTx.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("apellido", apellidoTx.getText().toString().trim()));
+            nameValuePairs.add(new BasicNameValuePair("rol", rol.trim()));
 
-        boolean response = APIHandler.POST(url, nameValuePairs);
-        return response;
+            boolean response = APIHandler.POST(url, nameValuePairs);
+
+            return response;
+
     }
 //----------Eventos del AsyncTask para los botones
 

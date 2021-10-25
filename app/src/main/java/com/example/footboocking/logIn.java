@@ -59,8 +59,15 @@ import java.util.List;
 
              if (json_array.length() > 0) {
                  usuario user = new usuario(json_array.getJSONObject(0));
-                 Intent IrRegistrar = new Intent(this, Lista_canchas.class);
-                 startActivity(IrRegistrar);
+                 int rol = user.getRol();
+                 if(rol == 1) {
+                     Intent IrAdmin = new Intent(this, MainActivity.class);
+                     startActivity(IrAdmin);
+                 }
+                 if(rol == 2) {
+                     Intent IrUser = new Intent(this, Lista_canchas.class);
+                     startActivity(IrUser);
+                 }
                  return user;
              }
              return null;
