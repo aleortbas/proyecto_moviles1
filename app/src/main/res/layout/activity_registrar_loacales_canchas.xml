@@ -50,13 +50,6 @@
             />
 
         <EditText
-            android:id="@+id/nombreAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Nombre Administrador" />
-
-        <EditText
             android:id="@+id/nombreLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,28 +74,13 @@
             />
 
         <EditText
-            android:id="@+id/CamaraComercio"
+            android:id="@+id/precioHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
-            android:hint="Camara y comersio"
+            android:hint="Precio por hora"
             />
 
-        <EditText
-            android:id="@+id/emailLocal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="Email"
-            />
-
-        <EditText
-            android:id="@+id/PasswordLocal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textVisiblePassword"
-            android:hint="Contraseña"
-            />
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -110,14 +88,32 @@
             android:layout_height="wrap_content"
             android:text="Creando esta cuenta usted acepta nuestros terminos y condicciones " />
 
-        <Button
-            android:id="@+id/buttonLocal"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/font_awesome"
-            android:backgroundTint="@color/black"
-            android:layout_weight="1"
-            android:text="Registrarse"/>
+            android:layout_weight="3"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/buttonLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/black"
+                android:text="Registrarse" />
+
+            <Button
+                android:id="@+id/buttonAdmin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Administrar" />
+        </LinearLayout>
 
 
     </LinearLayout>

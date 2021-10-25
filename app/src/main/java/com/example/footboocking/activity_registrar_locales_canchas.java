@@ -18,32 +18,21 @@ import java.util.List;
 
 public class activity_registrar_locales_canchas extends AppCompatActivity {
 
-    EditText nombreLocal,  direccion, numeroCanchas, camaraComercio,nombreAdmintxt,emailtxt,contrseñatxt;
+    EditText nombreLocal,  direccion, numeroCanchas, precio;
     Button button;
-    String nombreAdmin,email,contrseña,rol;
+    String rol;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_loacales_canchas);
 
-        nombreAdmin = getIntent().getStringExtra("nombreAdmin");
-        email = getIntent().getStringExtra("email");
-        contrseña = getIntent().getStringExtra("clave");
-        rol = getIntent().getStringExtra("rol");
-
-
         nombreLocal = findViewById(R.id.nombreLocal);
         direccion = findViewById(R.id.direccion);
         numeroCanchas = findViewById(R.id.NumeroCanchas);
-        camaraComercio = findViewById(R.id.CamaraComercio);
-        nombreAdmintxt = findViewById(R.id.nombreAdmin);
-        contrseñatxt = findViewById(R.id.PasswordLocal);
-        emailtxt = findViewById(R.id.emailLocal);
+        precio = findViewById(R.id.precioHora);
 
-        nombreAdmintxt.setText(nombreAdmin);
-        contrseñatxt.setText(contrseña);
-        emailtxt.setText(email);
+        rol = getIntent().getStringExtra("ID");
 
         button = findViewById(R.id.buttonLocal);
 
@@ -53,11 +42,7 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
                 if((!nombreLocal.getText().toString().trim().equalsIgnoreCase("")) ||
                         (!direccion.getText().toString().trim().equalsIgnoreCase("")) ||
                         (!numeroCanchas.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!contrseñatxt.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!nombreAdmintxt.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!contrseñatxt.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!emailtxt.getText().toString().trim().equalsIgnoreCase("")) ||
-                        (!camaraComercio.getText().toString().trim().equalsIgnoreCase(""))){
+                        (!precio.getText().toString().trim().equalsIgnoreCase(""))){
                     new Insertar(activity_registrar_locales_canchas.this).execute();
                 } else {
 
@@ -76,13 +61,10 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
         List<NameValuePair> nameValuePairs; // definimos la lista de datos
         nameValuePairs = new ArrayList<NameValuePair>(8); // tamaño del array
         nameValuePairs.add(new BasicNameValuePair("nombre", nombreLocal.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("nombre_administrador", nombreAdmintxt.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("direccion", direccion.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("numero_canchas", numeroCanchas.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("camara_comercio", camaraComercio.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("email", emailtxt.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("clave", contrseñatxt.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("rol", rol.trim()));
+        nameValuePairs.add(new BasicNameValuePair("precio_hora", precio.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("id_usuario", rol.trim()));
 
         boolean response = APIHandler.POST(url, nameValuePairs);
         return response;
@@ -102,13 +84,10 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(context, "Usuario creado", Toast.LENGTH_LONG).show();
-                        nombreAdmintxt.setText("");
                         nombreLocal.setText("");
                         direccion.setText("");
                         numeroCanchas.setText("");
-                        camaraComercio.setText("");
-                        emailtxt.setText("");
-                        contrseñatxt.setText("");
+                        precio.setText("");
                     }
                 });
             else

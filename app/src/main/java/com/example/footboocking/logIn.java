@@ -60,8 +60,10 @@ import java.util.List;
              if (json_array.length() > 0) {
                  usuario user = new usuario(json_array.getJSONObject(0));
                  int rol = user.getRol();
+                 String id = user.getId_user();
                  if(rol == 1) {
-                     Intent IrAdmin = new Intent(this, MainActivity.class);
+                     Intent IrAdmin = new Intent(this, activity_registrar_locales_canchas.class);
+                     IrAdmin.putExtra("ID",id);
                      startActivity(IrAdmin);
                  }
                  if(rol == 2) {
