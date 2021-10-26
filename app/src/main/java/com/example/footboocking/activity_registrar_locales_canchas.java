@@ -3,6 +3,7 @@ package com.example.footboocking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +20,8 @@ import java.util.List;
 public class activity_registrar_locales_canchas extends AppCompatActivity {
 
     EditText nombreLocal,  direccion, numeroCanchas, precio;
-    Button button;
-    String rol;
+    Button button, administrar;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +33,10 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
         numeroCanchas = findViewById(R.id.NumeroCanchas);
         precio = findViewById(R.id.precioHora);
 
-        rol = getIntent().getStringExtra("ID");
+        id = getIntent().getStringExtra("ID");
 
         button = findViewById(R.id.buttonLocal);
+        administrar = findViewById(R.id.buttonAdmin);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,10 +66,17 @@ public class activity_registrar_locales_canchas extends AppCompatActivity {
         nameValuePairs.add(new BasicNameValuePair("direccion", direccion.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("numero_canchas", numeroCanchas.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("precio_hora", precio.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("id_usuario", rol.trim()));
+        nameValuePairs.add(new BasicNameValuePair("id_usuario", id.trim()));
+
 
         boolean response = APIHandler.POST(url, nameValuePairs);
         return response;
+    }
+
+    public void IrAdministrar(View view) {
+        Intent IrLista = new Intent(this, AdministrarCanchas.class);
+        IrLista.putExtra("ID",id);
+        startActivity(IrLista);
     }
 //----------Eventos del AsyncTask para los botones
 

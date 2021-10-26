@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="12"
-    android:orientation="vertical"
-    tools:context=".activity_registrar_locales_canchas">
+    android:weightSum="12">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,18 +15,16 @@
         android:orientation="vertical"
         >
 
-        <TextView
-            android:id="@+id/textView2"
-            android:text="¿Local nuevo?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="203dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            />
-
+            app:srcCompat="@drawable/soccer_jersey" />
         <TextView
             android:id="@+id/textView"
-            android:text="Crea tu cuenta"
+            android:text="Gestiona todas las reervas que tengas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30dp"
@@ -38,8 +35,7 @@
             />
 
         <TextView
-            android:id="@+id/textView3"
-            android:text="Crea una cuenta para poder publicitar y gestionar tus canchas sinteticas"
+            android:id="@+id/idLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
@@ -48,46 +44,56 @@
             android:gravity="center|top"
             />
 
-        <EditText
-            android:id="@+id/nombreLocal"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Nombre Establecimento" />
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:text=""
+            android:layout_gravity="center"
+            android:gravity="center|top"
+            />
 
+        <TextView
+            android:id="@+id/precio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center|top"
+            />
 
-        <EditText
+        <TextView
+            android:id="@+id/idUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center|top"
+            />
+
+        <TextView
+            android:id="@+id/numero_canchas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center|top"
+            />
+
+        <TextView
             android:id="@+id/direccion"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:hint="Direccion"
+            android:textSize="20dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center|top"
             />
-
-        <EditText
-            android:id="@+id/NumeroCanchas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:hint="Numero de canchas"
-            />
-
-        <EditText
-            android:id="@+id/precioHora"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:hint="Precio por hora"
-            />
-
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Creando esta cuenta usted acepta nuestros terminos y condicciones " />
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,25 +103,24 @@
             >
 
             <Button
-                android:id="@+id/buttonLocal"
+                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/black"
-                android:text="Registrarse" />
+                android:onClick="listaCanchas"
+                android:text="Gestionar canchas" />
 
             <Button
-                android:id="@+id/buttonAdmin"
+                android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:onClick="IrAdministrar"
-                android:text="Administrar" />
+                android:onClick="agregarCancha"
+                android:text="Agregar Cancha" />
         </LinearLayout>
 
-
     </LinearLayout>
-
 </LinearLayout>

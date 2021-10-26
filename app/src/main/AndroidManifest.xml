@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".AdministrarCanchas"
+            android:exported="false" />
 
         <uses-library
             android:name="org.apache.http.legacy"

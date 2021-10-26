@@ -5,8 +5,7 @@ import org.json.JSONObject;
 
 public class local {
 
-    String id_admin, nombre, nombreAdmin, direccion, numeroCanchas, camaraComercio, email, clave;
-
+    String id_admin;
     public local (JSONObject objetoJSON) throws JSONException {
         this.id_admin = objetoJSON.getString("id");
     }

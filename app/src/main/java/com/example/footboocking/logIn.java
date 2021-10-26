@@ -49,7 +49,7 @@ import java.util.List;
          //DATOS
          List<NameValuePair> nameValuePairs; // lista de datos
          nameValuePairs = new ArrayList<NameValuePair>(2);//definimos array
-         nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString().trim())); // pasamos el id al servicio php
+         nameValuePairs.add(new BasicNameValuePair("email", email.getText().toString().trim()));
          nameValuePairs.add(new BasicNameValuePair("clave", contraseña.getText().toString().trim()));
 
          String json = APIHandler.POSTRESPONSE(url, nameValuePairs);
@@ -62,8 +62,8 @@ import java.util.List;
                  int rol = user.getRol();
                  String id = user.getId_user();
                  if(rol == 1) {
-                     Intent IrAdmin = new Intent(this, activity_registrar_locales_canchas.class);
-                     IrAdmin.putExtra("ID",id);
+                     Intent IrAdmin = new Intent(this,AdministrarCanchas.class);
+                     IrAdmin.putExtra("ID", id);
                      startActivity(IrAdmin);
                  }
                  if(rol == 2) {
