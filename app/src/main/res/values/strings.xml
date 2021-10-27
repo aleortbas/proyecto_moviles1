@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FootBoocking</string>
+    <string name="TextView">Selecciona un nombre</string>
 </resources>

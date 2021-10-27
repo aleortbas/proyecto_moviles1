@@ -18,6 +18,9 @@
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".listaCanchas"
+            android:exported="false" />
+        <activity
             android:name=".AdministrarCanchas"
             android:exported="false" />
 

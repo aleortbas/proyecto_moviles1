@@ -24,7 +24,7 @@ import java.util.List;
 
 public class AdministrarCanchas extends AppCompatActivity {
 
-    String id;
+    String id,id_canchas;
     ImageView imagen;
     TextView idCancha, nombre, precio, idUser, numeroCanchas, direccion;
 
@@ -61,6 +61,7 @@ public class AdministrarCanchas extends AppCompatActivity {
             JSONArray json_array = object.optJSONArray("canchas");
             if (json_array.length() > 0) {
                 canchas multa = new canchas(json_array.getJSONObject(0));
+                id_canchas = multa.getId();
                 return multa;
             }
             return null;
@@ -72,6 +73,12 @@ public class AdministrarCanchas extends AppCompatActivity {
         Intent IrLoca = new Intent(this, activity_registrar_locales_canchas.class);
         IrLoca.putExtra("ID",id);
         startActivity(IrLoca);
+    }
+
+    public void listaCanchas(View view) {
+        Intent IrLista = new Intent(this, listaCanchas.class);
+        //IrLista.putExtra("ID",id_canchas);
+        startActivity(IrLista);
     }
 
 
