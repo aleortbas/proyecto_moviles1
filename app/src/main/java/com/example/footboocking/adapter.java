@@ -42,7 +42,7 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
         holder.textViewTitle.setText(product.getNombre());
         holder.textViewDesc.setText(product.getDisponible());
         holder.textViewRating.setText(String.valueOf(product.getIdLocal()));
-        holder.textViewPrice.setText(String.valueOf(product.getPrecio()));
+        holder.textViewPrice.setText(String.valueOf(product.getDisponible()));
 
     }
 

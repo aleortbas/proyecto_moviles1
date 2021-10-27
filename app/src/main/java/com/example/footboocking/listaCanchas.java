@@ -60,10 +60,9 @@ public class listaCanchas extends AppCompatActivity {
                                 int id = jsonObject.getInt("id");
                                 int idLocal = jsonObject.getInt("id_Local");
                                 String disponible = jsonObject.getString("disponible");
-                                int precio = jsonObject.getInt("precio");
                                 String nombre = jsonObject.getString("nombre");
 
-                                Product product = new Product(id, idLocal, precio, disponible, nombre);
+                                Product product = new Product(id, idLocal, disponible, nombre);
                                 productList.add(product);
                             }
                             adapter = new adapter(listaCanchas.this, productList);
