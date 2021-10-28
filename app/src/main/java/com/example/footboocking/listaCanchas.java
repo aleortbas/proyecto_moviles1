@@ -4,7 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -13,10 +18,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +32,7 @@ public class listaCanchas extends AppCompatActivity {
 
     private static String id;
     String URL = null;
+    String id_canchas;
 
     RecyclerView recyclerView;
     adapter adapter;
@@ -33,6 +42,7 @@ public class listaCanchas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new Consultar(listaCanchas.this).execute();
         setContentView(R.layout.activity_lista_canchas2);
 
         id = getIntent().getExtras().getString("ID");
@@ -42,13 +52,74 @@ public class listaCanchas extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        URL =  "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id="+id;
         loadProducts();
+    }
 
-        
+    private canchas consultar() throws JSONException, IOException {
+
+        String usuario = getIntent().getExtras().getString("ID");
+
+        String url = Constants.URL + "footbocking/get-canchas-by-id.php";
+
+        //DATOS
+        List<NameValuePair> nameValuePairs;
+        nameValuePairs = new ArrayList<NameValuePair>(1);
+        nameValuePairs.add(new BasicNameValuePair("id_usuario", usuario.trim()));
+
+        String json = APIHandler.POSTRESPONSE(url, nameValuePairs);
+        if (json != null) {
+            JSONObject object = new JSONObject(json);
+            JSONArray json_array = object.optJSONArray("canchas");
+            if (json_array.length() > 0) {
+                canchas multa = new canchas(json_array.getJSONObject(0));
+                id_canchas = multa.getId();
+                return multa;
+            }
+            return null;
+        }
+        return null;
+    }
+
+    public void AddCancha(View view) {
+        Intent Add = new Intent(this, activity_registrar_locales_canchas.class);
+        Add.putExtra("ID", id);
+        startActivity(Add);
+    }
+
+    class Consultar extends AsyncTask<String, String, String> {
+        private Activity context;
+
+        Consultar(Activity context) {
+            this.context = context;
+        }
+
+        protected String doInBackground(String... params) {
+            try {
+                final canchas multa = consultar();
+                if (multa != null)
+                    context.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                        }
+                    });
+                else
+                    context.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                        }
+                    });
+            } catch (JSONException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 
     private void loadProducts() {
+
+        URL =  "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id="+id_canchas;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {

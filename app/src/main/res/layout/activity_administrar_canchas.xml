@@ -22,6 +22,7 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             app:srcCompat="@drawable/soccer_jersey" />
+
         <TextView
             android:id="@+id/textView"
             android:text="Gestiona todas las reervas que tengas"

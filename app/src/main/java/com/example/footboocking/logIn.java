@@ -62,7 +62,7 @@ import java.util.List;
                  int rol = user.getRol();
                  String id = user.getId_user();
                  if(rol == 1) {
-                     Intent IrAdmin = new Intent(this,AdministrarCanchas.class);
+                     Intent IrAdmin = new Intent(this,listaCanchas.class);
                      IrAdmin.putExtra("ID", id);
                      startActivity(IrAdmin);
                  }

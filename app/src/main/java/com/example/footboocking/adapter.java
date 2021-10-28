@@ -39,10 +39,10 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
     public void onBindViewHolder(@NonNull adpaterViewHolder holder, int position) {
         Product product = adapterList.get(position);
 
-        holder.textViewTitle.setText(product.getNombre());
+        holder.textViewTitle.setText(String.valueOf(product.getId()));
         holder.textViewDesc.setText(product.getDisponible());
         holder.textViewRating.setText(String.valueOf(product.getIdLocal()));
-        holder.textViewPrice.setText(String.valueOf(product.getDisponible()));
+        holder.textViewPrice.setText(String.valueOf(product.getNombre()));
 
     }
 

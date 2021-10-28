@@ -6,6 +6,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red_delete">#F00000</color>
 
     <!-- Estilos para el general Linear -->
     <style name="general">
