@@ -69,6 +69,7 @@ public class AdministrarCanchas extends AppCompatActivity {
         return null;
     }
 
+    //metodo encargado de ir al los activy de registrar local
     public void agregarCancha(View view) {
         Intent IrLoca = new Intent(this, activity_registrar_locales_canchas.class);
         IrLoca.putExtra("ID",id);
@@ -77,7 +78,7 @@ public class AdministrarCanchas extends AppCompatActivity {
 
     public void listaCanchas(View view) {
         Intent IrLista = new Intent(this, listaCanchas.class);
-        //IrLista.putExtra("ID",id_canchas);
+        IrLista.putExtra("ID",id_canchas);
         startActivity(IrLista);
     }
 

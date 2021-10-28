@@ -22,7 +22,8 @@ import java.util.List;
 
 public class listaCanchas extends AppCompatActivity {
 
-    private  static final String URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php";
+    private static String id;
+    String URL = null;
 
     RecyclerView recyclerView;
     adapter adapter;
@@ -34,19 +35,21 @@ public class listaCanchas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_canchas2);
 
-
+        id = getIntent().getExtras().getString("ID");
         productList = new ArrayList<>();
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        URL =  "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id="+id;
         loadProducts();
 
         
     }
 
     private void loadProducts() {
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {
                     @Override

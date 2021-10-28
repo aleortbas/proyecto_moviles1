@@ -17,17 +17,8 @@
         >
 
         <TextView
-            android:id="@+id/textView2"
-            android:text="¿Local nuevo?"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:layout_gravity="center"
-            />
-
-        <TextView
             android:id="@+id/textView"
-            android:text="Crea tu cuenta"
+            android:text="Crea tu local"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30dp"
@@ -42,7 +33,7 @@
             android:text="Crea una cuenta para poder publicitar y gestionar tus canchas sinteticas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center|top"
@@ -80,14 +71,44 @@
             android:hint="Precio por hora"
             />
 
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            tools:context=".MapsActivity" />
 
-        <CheckBox
-            android:id="@+id/checkBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Creando esta cuenta usted acepta nuestros terminos y condicciones " />
+            android:layout_weight="3"
+            android:weightSum="2"
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:id="@+id/lat"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="20dp"
+                android:inputType="text"
+                android:layout_weight="1"
+                android:hint="0.00000"
+                android:gravity="center"
+                android:textSize="15dp" />
 
-
+            <EditText
+                android:id="@+id/lon"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:inputType="text"
+                android:hint="0.00000"
+                android:gravity="center"
+                android:textSize="15dp" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
