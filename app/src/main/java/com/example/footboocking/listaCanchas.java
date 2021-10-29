@@ -168,6 +168,7 @@ public class listaCanchas extends AppCompatActivity implements com.example.footb
         edit.putExtra("id_local",clickItem.getIdLocal());
         edit.putExtra("nombre",clickItem.getNombre());
         edit.putExtra("disponible",clickItem.getDisponible());
+        edit.putExtra("imagen",clickItem.getImage());
         startActivity(edit);
     }
 
