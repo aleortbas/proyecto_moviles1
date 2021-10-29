@@ -44,6 +44,7 @@ public class updateCancha extends AppCompatActivity {
         nombreTxt = findViewById(R.id.nombreCancha);
         link = findViewById(R.id.imagenLink);
         edit = findViewById(R.id.buttonEdit);
+        delete = findViewById(R.id.buttonDelete);
 
         idBaseDatos.setText(id + "");
         id_LocalDB.setText(id_local + "");
@@ -51,8 +52,14 @@ public class updateCancha extends AppCompatActivity {
         disponibleTxt.setText(disponible);
         link.setText(imagen);
 
-        edit.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Eliminar(updateCancha.this).execute();
+            }
+        });
 
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new Modificar(updateCancha.this).execute();
@@ -99,6 +106,49 @@ public class updateCancha extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(context, "Multa no encontrada", Toast.LENGTH_LONG).show();
+                    }
+                });
+            return null;
+        }
+    }
+
+    private boolean eliminar() {
+
+        String url = Constants.URL + "footbocking/delete_num_canchas.php";
+
+        //DATOS
+        List<NameValuePair> nameValuePairs;
+        nameValuePairs = new ArrayList<NameValuePair>(3);
+        nameValuePairs.add(new BasicNameValuePair("id", idBaseDatos.getText().toString().trim()));
+        boolean response = APIHandler.POST(url, nameValuePairs); // Enviamos el id al webservices
+
+        Intent IrAdmin = new Intent(this,listaCanchas.class);
+        IrAdmin.putExtra("ID", id_local);
+        startActivity(IrAdmin);
+
+        return response;
+    }
+
+    class Eliminar extends AsyncTask<String, String, String> {
+        private Activity context;
+
+        Eliminar(Activity context) {
+            this.context = context;
+        }
+
+        protected String doInBackground(String... params) {
+            if (eliminar())
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Cacha eliminada", Toast.LENGTH_LONG).show();
+                    }
+                });
+            else
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Cancha no eliminada", Toast.LENGTH_LONG).show();
                     }
                 });
             return null;

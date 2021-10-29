@@ -23,6 +23,9 @@
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".agregarInfoCanchas"
+            android:exported="false" />
+        <activity
             android:name=".updateCancha"
             android:exported="false" />
         <!--

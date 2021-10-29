@@ -39,6 +39,7 @@ public class RegistrarUsuario extends AppCompatActivity {
         rolUser = findViewById(R.id.radioUser);
         button = (Button) findViewById(R.id.button);
 
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +77,10 @@ public class RegistrarUsuario extends AppCompatActivity {
             nameValuePairs.add(new BasicNameValuePair("rol", rol.trim()));
 
             boolean response = APIHandler.POST(url, nameValuePairs);
+
+            Intent Irlogin = new Intent(this,logIn.class);
+            Irlogin.putExtra("email", emailTx.getText().toString());
+            startActivity(Irlogin);
 
             return response;
 

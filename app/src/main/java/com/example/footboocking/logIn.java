@@ -23,6 +23,7 @@ import java.util.List;
 
  public class logIn extends AppCompatActivity {
 
+     String emailGet;
      EditText email, contraseña;
      Button button;
 
@@ -31,7 +32,11 @@ import java.util.List;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
+        Intent intent = getIntent();
+        emailGet = intent.getStringExtra("email");
+
         email = findViewById(R.id.editTextTextEmailAddress);
+        email.setText(emailGet);
         contraseña = findViewById(R.id.editTextTextPassword);
 
         button = findViewById(R.id.buttonLogin);

@@ -120,7 +120,13 @@ public class listaCanchas extends AppCompatActivity implements com.example.footb
 
     private void loadProducts() {
 
-        URL =  "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id="+id_canchas;
+        String id;
+        id = getIntent().getExtras().getString("ID_cancha");
+        if(id != null) {
+            URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id=" + id;
+        }else {
+            URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id=" + id_canchas;
+        }
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {
