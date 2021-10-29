@@ -5,12 +5,14 @@ public class Product {
     private  int idLocal;
     private  String nombre;
     private  String disponible;
+    private  String image;
 
-    public Product(int id, int idLocal, String nombre, String disponible) {
+    public Product(int id, int idLocal, String nombre, String disponible, String image) {
         this.id = id;
         this.idLocal = idLocal;
         this.nombre = nombre;
         this.disponible = disponible;
+        this.image = image;
     }
 
     public int getId() {
@@ -27,5 +29,9 @@ public class Product {
 
     public String getDisponible() {
         return disponible;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

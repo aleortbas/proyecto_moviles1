@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class listaCanchas extends AppCompatActivity {
+public class listaCanchas extends AppCompatActivity implements com.example.footboocking.adapter.OnItemClickListener {
 
     private static String id;
     String URL = null;
@@ -86,6 +86,7 @@ public class listaCanchas extends AppCompatActivity {
         startActivity(Add);
     }
 
+
     class Consultar extends AsyncTask<String, String, String> {
         private Activity context;
 
@@ -135,12 +136,14 @@ public class listaCanchas extends AppCompatActivity {
                                 int idLocal = jsonObject.getInt("id_Local");
                                 String disponible = jsonObject.getString("disponible");
                                 String nombre = jsonObject.getString("nombre");
+                                String image = jsonObject.getString("imagen");
 
-                                Product product = new Product(id, idLocal, disponible, nombre);
+                                Product product = new Product(id, idLocal, disponible, nombre, image);
                                 productList.add(product);
                             }
                             adapter = new adapter(listaCanchas.this, productList);
                             recyclerView.setAdapter(adapter);
+                            adapter.setOnItemClickListener(listaCanchas.this);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -154,6 +157,18 @@ public class listaCanchas extends AppCompatActivity {
                 });
 
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public void OnItemClick(int position) {
+        Intent edit = new Intent(this, updateCancha.class);
+        Product clickItem = productList.get(position);
+
+        edit.putExtra("id",clickItem.getId());
+        edit.putExtra("id_local",clickItem.getIdLocal());
+        edit.putExtra("nombre",clickItem.getNombre());
+        edit.putExtra("disponible",clickItem.getDisponible());
+        startActivity(edit);
     }
 
 }

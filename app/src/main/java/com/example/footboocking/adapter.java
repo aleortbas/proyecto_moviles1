@@ -6,6 +6,7 @@ package com.example.footboocking;
 * */
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
 
     private Context mCtx;
     private List<Product> adapterList;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener{
+        void OnItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
 
     public adapter(Context mCtx, List<Product> adapterList) {
         this.mCtx = mCtx;
@@ -38,6 +50,10 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull adpaterViewHolder holder, int position) {
         Product product = adapterList.get(position);
+
+        Glide.with(mCtx)
+                .load(product.getImage())
+                .into(holder.imageView);
 
         holder.textViewTitle.setText(String.valueOf(product.getId()));
         holder.textViewDesc.setText(product.getDisponible());
@@ -64,6 +80,18 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
             textViewDesc = itemView.findViewById(R.id.textViewShortDesc);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewRating = itemView.findViewById(R.id.textViewRating);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(mListener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            mListener.OnItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
 }
