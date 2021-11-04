@@ -31,7 +31,7 @@ public class activity_registrar_locales_canchas extends AppCompatActivity implem
     private GoogleMap mMap;
     EditText nombreLocal,  direccion, numeroCanchas, precio, lat, lon;
     Button button, administrar;
-    String id;
+    String id, id_canchas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class activity_registrar_locales_canchas extends AppCompatActivity implem
         precio = findViewById(R.id.precioHora);
 
         id = getIntent().getStringExtra("ID");
+        id_canchas = getIntent().getStringExtra("Id_canchas");
 
         button = findViewById(R.id.buttonLocal);
         administrar = findViewById(R.id.buttonAdmin);
@@ -93,6 +94,7 @@ public class activity_registrar_locales_canchas extends AppCompatActivity implem
     public void IrAdministrar(View view) {
         Intent IrLista = new Intent(this, AdministrarCanchas.class);
         IrLista.putExtra("ID",id);
+        IrLista.putExtra("Id_canchas",id_canchas);
         startActivity(IrLista);
     }
 

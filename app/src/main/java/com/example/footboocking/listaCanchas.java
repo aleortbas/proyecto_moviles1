@@ -83,6 +83,7 @@ public class listaCanchas extends AppCompatActivity implements com.example.footb
     public void AddCancha(View view) {
         Intent Add = new Intent(this, activity_registrar_locales_canchas.class);
         Add.putExtra("ID", id);
+        Add.putExtra("Id_canchas", id_canchas);
         startActivity(Add);
     }
 
@@ -120,14 +121,14 @@ public class listaCanchas extends AppCompatActivity implements com.example.footb
 
     private void loadProducts() {
 
-        String id;
-        id = getIntent().getExtras().getString("ID_cancha");
-        if(id != null) {
-            URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id=" + id;
-        }else {
+        String id_canchas2;
+        id_canchas2 = getIntent().getExtras().getString("Id_canchas");
+
+        if(id_canchas == null) {
+            URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id=" + id_canchas2;
+        }else{
             URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id=" + id_canchas;
         }
-
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {
                     @Override
