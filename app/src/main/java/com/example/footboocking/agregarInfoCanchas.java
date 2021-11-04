@@ -28,8 +28,8 @@ public class agregarInfoCanchas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_info_canchas);
 
-        id = getIntent().getExtras().getString("ID");
-        id_usuario = getIntent().getExtras().getString("id_usuario");
+        id = getIntent().getExtras().getString("Id_canchas");
+        id_usuario = getIntent().getExtras().getString("ID");
 
         idLocal = findViewById(R.id.id_unico_local);
         estado = findViewById(R.id.estado);
@@ -69,8 +69,8 @@ public class agregarInfoCanchas extends AppCompatActivity {
         boolean response = APIHandler.POST(url, nameValuePairs);
 
         Intent Irlogin = new Intent(this,listaCanchas.class);
-        Irlogin.putExtra("ID", idLocal.getText().toString());
-        Irlogin.putExtra("id_usuario", id_usuario);
+        Irlogin.putExtra("Id_canchas", id);
+        Irlogin.putExtra("ID", id_usuario);
         startActivity(Irlogin);
 
         return response;
