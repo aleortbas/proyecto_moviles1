@@ -23,7 +23,6 @@ public class RegistrarUsuario extends AppCompatActivity {
 
     EditText nombreTx,apellidoTx,emailTx,contraseñaTx,telefonotx;
     Button button;
-    RadioButton rolAdmin, rolUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,6 @@ public class RegistrarUsuario extends AppCompatActivity {
         emailTx = findViewById(R.id.email);
         contraseñaTx = findViewById(R.id.Password);
         telefonotx = findViewById(R.id.editTextPhone);
-        rolAdmin = findViewById(R.id.radioAdmin);
-        rolUser = findViewById(R.id.radioUser);
         button = (Button) findViewById(R.id.button);
 
 
@@ -60,12 +57,7 @@ public class RegistrarUsuario extends AppCompatActivity {
     private boolean insertar() {
 
         String url = Constants.URL + "footbocking/add.php";
-        String rol = null;
-        if(rolAdmin.isChecked()==true){
-            rol = "1";
-        }else if(rolUser.isChecked()==true){
-            rol = "2";
-        }
+        String rol = "2";
             List<NameValuePair> nameValuePairs; // definimos la lista de datos
             nameValuePairs = new ArrayList<NameValuePair>(7); // tamaño del array
 
