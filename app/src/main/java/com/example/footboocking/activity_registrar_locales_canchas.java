@@ -92,7 +92,7 @@ public class activity_registrar_locales_canchas extends AppCompatActivity implem
     }
 
     public void IrAdministrar(View view) {
-        Intent IrLista = new Intent(this, AdministrarCanchas.class);
+        Intent IrLista = new Intent(this, listaCanchas.class);
         IrLista.putExtra("ID",id);
         IrLista.putExtra("Id_canchas",id_canchas);
         startActivity(IrLista);

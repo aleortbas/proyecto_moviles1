@@ -50,9 +50,6 @@
         <activity
             android:name=".listaCanchas"
             android:exported="false" />
-        <activity
-            android:name=".AdministrarCanchas"
-            android:exported="false" />
 
         <uses-library
             android:name="org.apache.http.legacy"

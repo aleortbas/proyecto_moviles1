@@ -133,7 +133,7 @@
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:onClick="IrAdministrar"
-                android:text="Administrar" />
+                android:text="Atras" />
         </LinearLayout>
 
 
