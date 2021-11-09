@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -13,6 +16,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +27,7 @@ import java.util.List;
 
 public class Admin extends AppCompatActivity implements com.example.footboocking.adapterRequest.OnItemClickListener{
 
+    int idUsuario;
     String URL = null;
     RecyclerView recyclerView;
     adapterRequest adapter;
@@ -61,7 +67,7 @@ public class Admin extends AppCompatActivity implements com.example.footboocking
                                 String tipoID = jsonObject.getString("tipo_identificacion");
                                 int numeroID = jsonObject.getInt("numero_identificacion");
                                 String camaraComercio = jsonObject.getString("camara_comercio");
-                                int idUsuario = jsonObject.getInt("id_usuario");
+                                idUsuario = jsonObject.getInt("id_usuario");
                                 int estado = jsonObject.getInt("estado");
                                 String foto = jsonObject.getString("foto");
 
@@ -88,6 +94,51 @@ public class Admin extends AppCompatActivity implements com.example.footboocking
 
     @Override
     public void OnItemClick(int position) {
+        new Cambiar(Admin.this).execute();
+    }
 
+    private boolean cambiar(int posi) {
+
+        String url = Constants.URL + "footbocking/cambio_rol.php";
+
+        solicitud onclick = productList.get(posi);
+        int id_usuario = onclick.getId_usuario();
+        String id = Integer.toString(id_usuario);
+
+        //DATOS
+        List<NameValuePair> nameValuePairs;
+        nameValuePairs = new ArrayList<NameValuePair>(7);
+        nameValuePairs.add(new BasicNameValuePair("id", id.trim()));
+
+
+        boolean response = APIHandler.POST(url, nameValuePairs); // enviamos los datos por POST al Webservice PHP
+        return response;
+    }
+
+
+    class Cambiar extends AsyncTask<String, String, String> {
+        private Activity context;
+
+        Cambiar(Activity context) {
+            this.context = context;
+        }
+
+        protected String doInBackground(String... params) {
+            if (cambiar(1))
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Rol nuevo asignado", Toast.LENGTH_LONG).show();
+                    }
+                });
+            else
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Ocurrio un erro", Toast.LENGTH_LONG).show();
+                    }
+                });
+            return null;
+        }
     }
 }

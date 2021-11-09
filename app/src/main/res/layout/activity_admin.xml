@@ -17,7 +17,7 @@
         >
         <TextView
             android:id="@+id/textView"
-            android:text="Gestiona tus canchas, aqui podras eliminarlas o editar su informacion"
+            android:text="Listado de todos los usuarios que desean tener un rol de Administrador de local"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"

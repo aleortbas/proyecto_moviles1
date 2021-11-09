@@ -98,14 +98,14 @@ public class updateCancha extends AppCompatActivity {
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "Multa modificada", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Informacion modificada", Toast.LENGTH_LONG).show();
                     }
                 });
             else
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "Multa no encontrada", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Numero de cancha no encontrada", Toast.LENGTH_LONG).show();
                     }
                 });
             return null;
@@ -122,10 +122,6 @@ public class updateCancha extends AppCompatActivity {
         nameValuePairs.add(new BasicNameValuePair("id", idBaseDatos.getText().toString().trim()));
         boolean response = APIHandler.POST(url, nameValuePairs); // Enviamos el id al webservices
 
-        Intent IrAdmin = new Intent(this,listaCanchas.class);
-        IrAdmin.putExtra("ID", id_local);
-        startActivity(IrAdmin);
-
         return response;
     }
 
@@ -141,7 +137,7 @@ public class updateCancha extends AppCompatActivity {
                 context.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(context, "Cacha eliminada", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Cacha eliminada, la proxima vez que se registre la informacion se actualizara", Toast.LENGTH_LONG).show();
                     }
                 });
             else
