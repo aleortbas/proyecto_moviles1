@@ -98,6 +98,13 @@ public class activity_registrar_locales_canchas extends AppCompatActivity implem
         startActivity(IrLista);
     }
 
+    public void IrAgregar(View view) {
+        Intent IrAdd = new Intent(this, agregarInfoCanchas.class);
+        IrAdd.putExtra("ID",id);
+        IrAdd.putExtra("Id_canchas", id_canchas);
+        startActivity(IrAdd);
+    }
+
 //----------Eventos del AsyncTask para los botones
 
     class Insertar extends AsyncTask<String, String, String> {
