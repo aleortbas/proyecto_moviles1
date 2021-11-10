@@ -69,19 +69,6 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/edit"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewRating"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="45dp"
-                android:layout_toRightOf="@id/imageView"
-                android:onClick="editar"
-                android:text="Editar"
-                android:textStyle="bold" />
-
-
 
         </RelativeLayout>
 

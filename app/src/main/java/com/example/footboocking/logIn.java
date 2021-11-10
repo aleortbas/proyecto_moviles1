@@ -72,7 +72,7 @@ import java.util.List;
                      startActivity(IrAdmin);
                  }
                  if(rol == 2) {
-                     Intent IrUser = new Intent(this, Lista_canchas.class);
+                     Intent IrUser = new Intent(getApplicationContext(), MapsActivity.class);
                      startActivity(IrUser);
                  }
                  if(rol == 3) {
