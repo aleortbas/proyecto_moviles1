@@ -98,10 +98,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(@NonNull Marker marker) {
-                String markeTitle = marker.getTitle();
+                String markeTitle = marker.getSnippet();
 
-                Intent i = new Intent(MapsActivity.this, infoLocal.class);
-                i.putExtra("prueba",markeTitle);
+                Intent i = new Intent(MapsActivity.this, InfolocalActivity.class);
+                i.putExtra("ID",markeTitle);
                 startActivity(i);
 
                 return false;
@@ -153,7 +153,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Double lat = Double.parseDouble(info.lat);
                 Double lon = Double.parseDouble(info.lon);
                 String title = info.nombre;
-                String snippet = info.direccion;
+                String snippet = info.id;
 
                 MarkerOptions marker = new MarkerOptions().position(new LatLng(lat,lon))
                         .title(title)

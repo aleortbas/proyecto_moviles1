@@ -23,7 +23,10 @@
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".infoLocal"
+            android:name=".InfolocalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".formatoReserva"
             android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -58,9 +61,6 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity
-            android:name=".Lista_canchas"
-            android:exported="true" />
         <activity
             android:name=".logIn"
             android:exported="true" />
