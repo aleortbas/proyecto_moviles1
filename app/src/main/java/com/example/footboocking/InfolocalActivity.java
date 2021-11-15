@@ -26,9 +26,9 @@ public class InfolocalActivity extends AppCompatActivity {
     String URL = null;
 
     RecyclerView recyclerView;
-    adapterCanchas adapterCanchas;
+    adapter adapterCanchas;
 
-    List<cancha> canchaList;
+    List<Product> canchaList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +67,10 @@ public class InfolocalActivity extends AppCompatActivity {
                                 String nombre = jsonObject.getString("nombre");
                                 String image = jsonObject.getString("imagen");
 
-                                cancha product = new cancha(id, idLocal, disponible, nombre, image);
+                                Product product = new Product(id, idLocal, disponible, nombre, image);
                                 canchaList.add(product);
                             }
-                            adapterCanchas = new adapterCanchas(InfolocalActivity.this, canchaList);
+                            adapterCanchas = new adapter(InfolocalActivity.this, canchaList);
                             recyclerView.setAdapter(adapterCanchas);
                             adapterCanchas.setOnItemClickListener(InfolocalActivity.this);
                         } catch (JSONException e) {
@@ -87,4 +87,5 @@ public class InfolocalActivity extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(stringRequest);
     }
+
 }

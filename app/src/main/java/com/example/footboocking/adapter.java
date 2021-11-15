@@ -26,6 +26,9 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
     private List<Product> adapterList;
     private OnItemClickListener mListener;
 
+    public void setOnItemClickListener(InfolocalActivity infolocalActivity) {
+    }
+
     public interface OnItemClickListener{
         void OnItemClick(int position);
     }
