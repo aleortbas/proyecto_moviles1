@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -20,13 +21,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InfolocalActivity extends AppCompatActivity {
+public class InfolocalActivity extends AppCompatActivity implements com.example.footboocking.adapterCanchas.OnItemClickListener {
 
     int id;
     String URL = null;
 
     RecyclerView recyclerView;
-    adapter adapterCanchas;
+    adapterCanchas adapterCanchas;
 
     List<Product> canchaList;
 
@@ -70,7 +71,7 @@ public class InfolocalActivity extends AppCompatActivity {
                                 Product product = new Product(id, idLocal, disponible, nombre, image);
                                 canchaList.add(product);
                             }
-                            adapterCanchas = new adapter(InfolocalActivity.this, canchaList);
+                            adapterCanchas = new adapterCanchas(InfolocalActivity.this, canchaList);
                             recyclerView.setAdapter(adapterCanchas);
                             adapterCanchas.setOnItemClickListener(InfolocalActivity.this);
                         } catch (JSONException e) {
@@ -88,4 +89,16 @@ public class InfolocalActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(stringRequest);
     }
 
+    @Override
+    public void OnItemClick(int position) {
+        Intent edit = new Intent(this, formatoReserva.class);
+        Product clickItem = canchaList.get(position);
+
+        edit.putExtra("id",clickItem.getId());
+        edit.putExtra("id_local",clickItem.getIdLocal());
+        edit.putExtra("nombre",clickItem.getNombre());
+        edit.putExtra("disponible",clickItem.getDisponible());
+        edit.putExtra("imagen",clickItem.getImage());
+        startActivity(edit);
+    }
 }
