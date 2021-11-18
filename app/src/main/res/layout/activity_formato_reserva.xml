@@ -24,13 +24,15 @@
             android:layout_weight="1"
             app:srcCompat="@drawable/soccer_player" />
 
-        <EditText
-            android:id="@+id/idLocal"
+
+        <TextView
+            android:id="@+id/textView7"
             android:layout_width="340dp"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:inputType="textPersonName" />
+            android:text="Ingrese los datos necesarios y consulte el horario antes de registrar la reserva." />
 
         <EditText
             android:id="@+id/idCancha"
@@ -38,6 +40,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:gravity="center"
+            android:hint="ID: "
             android:inputType="textPersonName" />
 
         <EditText
@@ -65,38 +68,51 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:hint="Hora Inicial"
-            android:inputType="textPersonName" />
+            android:inputType="text" />
 
         <EditText
-            android:id="@+id/nombre"
+            android:id="@+id/horaFinal"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:hint="Hora Final"
-            android:inputType="textPersonName" />
+            android:inputType="text" />
 
         <RadioGroup
-            android:layout_width="340dp"
+            android:layout_width="wrap_content"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="170dp"
+                android:id="@+id/registrar"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/black"
                 android:fontFamily="@font/font_awesome"
+                android:onClick="registrar"
                 android:text="Registrarse" />
 
             <Button
+                android:id="@+id/consultar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/font_awesome"
+                android:onClick="consultar"
+                android:textColor="@color/black"
+                android:text="consultar" />
+
+            <Button
                 android:id="@+id/buttonQr"
-                android:layout_width="170dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/font_awesome"
+                android:onClick="atras"
                 android:text="Atras"
                 />
 

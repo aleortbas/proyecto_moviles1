@@ -94,7 +94,7 @@ public class InfolocalActivity extends AppCompatActivity implements com.example.
         Intent edit = new Intent(this, formatoReserva.class);
         Product clickItem = canchaList.get(position);
 
-        edit.putExtra("id_local",clickItem.getIdLocal());
+        edit.putExtra("id_local",clickItem.getId());
         startActivity(edit);
     }
 }
