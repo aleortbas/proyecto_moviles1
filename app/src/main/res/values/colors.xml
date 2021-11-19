@@ -8,6 +8,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red_delete">#F00000</color>
 
+    <!-- Colores para el pop up -->
+    <color name="darkGray">#333533</color>
+    <color name="lightGray">#EEE</color>
+
     <!-- Estilos para el general Linear -->
     <style name="general">
         <item name="android:layout_height">match_parent</item>

@@ -3,12 +3,14 @@ package com.example.footboocking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -20,12 +22,13 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class formatoReserva extends AppCompatActivity {
 
     EditText idCancha, nombreReserva, fecha, horaInicio, horaFinal;
-    Button registrar, atras, consultar;
-    int id;
+    Button registrar, atras, consultar, timeButton;
+    int id, horas, minutos;
 
 
     @Override
@@ -45,6 +48,7 @@ public class formatoReserva extends AppCompatActivity {
         registrar = findViewById(R.id.registrar);
         atras = findViewById(R.id.consultar);
         consultar = findViewById(R.id.consultar);
+        timeButton = findViewById(R.id.timeButton);
 
         consultar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +56,31 @@ public class formatoReserva extends AppCompatActivity {
                 new Consultar(formatoReserva.this).execute();
             }
         });
+
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Insertar(formatoReserva.this).execute();
+            }
+        });
+
         idCancha.setText(""+id);
+    }
+
+    public void popTimePicker(View view) {
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                horas = hourOfDay;
+                minutos = minute;
+                horaInicio.setText(String.format(Locale.getDefault(),"%02d:%02d", horas, minutos));
+                horaFinal.setText(String.format(Locale.getDefault(),"%02d:%02d", horas+1, minutos));
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener, horas, minutos, true);
+
+        timePickerDialog.setTitle("Hora selecionada");
+        timePickerDialog.show();
     }
 
     private horas consultar() throws JSONException, IOException {
@@ -110,6 +138,54 @@ public class formatoReserva extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return null;
+        }
+    }
+
+    private boolean insertar() {
+
+        String url = Constants.URL + "footbocking/addreserva.php";
+
+        List<NameValuePair> nameValuePairs; // definimos la lista de datos
+        nameValuePairs = new ArrayList<NameValuePair>(4); // tamaño del array
+
+        nameValuePairs.add(new BasicNameValuePair("id", idCancha.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("nombre", nombreReserva.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("hora", horaInicio.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("hora_final", horaFinal.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("fecha", fecha.getText().toString().trim()));
+
+        boolean response = APIHandler.POST(url, nameValuePairs);
+
+        return response;
+    }
+
+    class Insertar extends AsyncTask<String, String, String> {
+        private Activity context;
+
+        Insertar(Activity context) {
+            this.context = context;
+        }
+
+        protected String doInBackground(String... params) {
+            if (insertar())
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Reserva creada", Toast.LENGTH_LONG).show();
+                        horaInicio.setText("");
+                        horaFinal.setText("");
+                        fecha.setText("");
+                        nombreReserva.setText("");
+                    }
+                });
+            else
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, "Reserva no creado", Toast.LENGTH_LONG).show();
+                    }
+                });
             return null;
         }
     }
