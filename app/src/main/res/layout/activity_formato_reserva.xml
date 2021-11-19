@@ -52,14 +52,34 @@
             android:hint="Nombre"
             android:inputType="textPersonName" />
 
-        <EditText
-            android:id="@+id/fecha"
+        <LinearLayout
             android:layout_width="340dp"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="2"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="Fecha"
-            android:inputType="date" />
+            android:orientation="horizontal"
+            >
+            <EditText
+                android:id="@+id/fecha"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="Fecha"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/calendarButton"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:onClick="openDatePicker"
+                android:fontFamily="@font/font_awesome_solid"
+                android:text="\uf784" />
+
+        </LinearLayout>
 
 
         <LinearLayout
