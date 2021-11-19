@@ -35,7 +35,7 @@
             android:text="Ingrese los datos necesarios y consulte el horario antes de registrar la reserva." />
 
         <EditText
-            android:id="@+id/idCancha"
+            android:id="@+id/idCanchaHora"
             android:layout_width="340dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

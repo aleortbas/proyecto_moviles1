@@ -26,7 +26,6 @@ public class formatoReserva extends AppCompatActivity {
     EditText idCancha, nombreReserva, fecha, horaInicio, horaFinal;
     Button registrar, atras, consultar;
     int id;
-    String id_cancha;
 
 
     @Override
@@ -35,10 +34,9 @@ public class formatoReserva extends AppCompatActivity {
         setContentView(R.layout.activity_formato_reserva);
 
         Intent intent = getIntent();
-        id = intent.getIntExtra("id_local",0);
-        id_cancha = String.valueOf(id);
+        id = intent.getIntExtra("id_local", 0);
 
-        idCancha = findViewById(R.id.idCancha);
+        idCancha = findViewById(R.id.idCanchaHora);
         nombreReserva = findViewById(R.id.nombreReserva);
         fecha = findViewById(R.id.fecha);
         horaInicio = findViewById(R.id.horaInicio);
@@ -54,27 +52,26 @@ public class formatoReserva extends AppCompatActivity {
                 new Consultar(formatoReserva.this).execute();
             }
         });
-
-        idCancha.setText(id+"");
+        idCancha.setText(""+id);
     }
 
-    private horario consultar() throws JSONException, IOException {
+    private horas consultar() throws JSONException, IOException {
 
-        String url = Constants.URL + "footbocking/consultar.php"; // Ruta
+        String url = Constants.URL + "footbocking/consultar.php";
 
         //DATOS
         List<NameValuePair> nameValuePairs; // lista de datos
-        nameValuePairs = new ArrayList<NameValuePair>(3);//definimos array
-        nameValuePairs.add(new BasicNameValuePair("idCancha", id_cancha.trim()));
+        nameValuePairs = new ArrayList<NameValuePair>(2);// array
+        nameValuePairs.add(new BasicNameValuePair("id", idCancha.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("hora", horaInicio.getText().toString().trim()));
-        nameValuePairs.add(new BasicNameValuePair("horaFinal", horaFinal.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("hora_final", horaFinal.getText().toString().trim()));
 
         String json = APIHandler.POSTRESPONSE(url, nameValuePairs);
         if (json != null) {
             JSONObject object = new JSONObject(json);
-            JSONArray json_array = object.optJSONArray("horario");
+            JSONArray json_array = object.optJSONArray("hora");
             if (json_array.length() > 0) {
-                horario multa = new horario(json_array.getJSONObject(0));
+                horas multa = new horas(json_array.getJSONObject(0));
                 return multa;
             }
             return null;
@@ -82,31 +79,32 @@ public class formatoReserva extends AppCompatActivity {
         return null;
     }
 
-
-    class Consultar extends AsyncTask<String, String, String>{
+    class Consultar extends AsyncTask<String, String, String> {
         private Activity context;
 
         Consultar(Activity context) {
             this.context = context;
         }
 
-        @Override
-        protected String doInBackground(String... strings) {
+        protected String doInBackground(String... params) {
             try {
-                final horario hora = consultar();
-                if (hora != null){
+                final horas multa = consultar();
+                if (multa != null)
+                    if(multa.getEstado().equals("1")) {
+                        context.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(context, "Horario disponible", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                else
                     context.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            if(hora.getEstado()==1){
-                                Toast.makeText(context, "Hora disponible", Toast.LENGTH_LONG).show();
-                            }
-                            if(hora.getEstado()==2){
-                                Toast.makeText(context, "Hora no disponible", Toast.LENGTH_LONG).show();
-                            }
+                            Toast.makeText(context, "Horario no disponible", Toast.LENGTH_LONG).show();
                         }
                     });
-                }
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
