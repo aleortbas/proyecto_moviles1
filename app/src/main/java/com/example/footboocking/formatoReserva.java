@@ -254,10 +254,7 @@ public class formatoReserva extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(context, "Reserva creada", Toast.LENGTH_LONG).show();
-                        horaInicio.setText("");
-                        horaFinal.setText("");
-                        fecha.setText("");
-                        nombreReserva.setText("");
+
                     }
                 });
             else
