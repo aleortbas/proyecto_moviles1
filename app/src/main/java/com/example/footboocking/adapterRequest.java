@@ -63,7 +63,7 @@ public class adapterRequest extends RecyclerView.Adapter<adapterRequest.adpaterV
         if(product.getEstado() == 1){
             holder.textViewEstado.setText("Estado en espera" + String.valueOf(product.getEstado()));
         }else{
-            holder.textViewEstado.setText("Estado en espera" + String.valueOf(product.getEstado()));
+            holder.textViewEstado.setText("Estado revisado y nuevo rol asignado" + String.valueOf(product.getEstado()));
         }
 
     }

@@ -23,6 +23,9 @@
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".updateUser"
+            android:exported="false" />
+        <activity
             android:name=".InfolocalActivity"
             android:exported="false" />
         <activity

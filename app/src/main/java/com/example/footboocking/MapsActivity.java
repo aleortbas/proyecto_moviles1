@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -171,4 +172,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Toast.makeText(getApplicationContext(), error.getMessage(),Toast.LENGTH_LONG).show();
         }
     };
+
+    public void Editar(View view) {
+        Intent i = new Intent(MapsActivity.this, InfolocalActivity.class);
+        startActivity(i);
+    }
 }

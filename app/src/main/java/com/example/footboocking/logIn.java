@@ -66,6 +66,8 @@ import java.util.List;
                  usuario user = new usuario(json_array.getJSONObject(0));
                  int rol = user.getRol();
                  String id = user.getId_user();
+                 String email = user.getEmailDB();
+                 String contraseñaDB = user.getContraseñaDB();
                  if(rol == 1) {
                      Intent IrAdmin = new Intent(this,Admin.class);
                      IrAdmin.putExtra("ID", id);
@@ -73,6 +75,8 @@ import java.util.List;
                  }
                  if(rol == 2) {
                      Intent IrUser = new Intent(getApplicationContext(), MapsActivity.class);
+                     IrUser.putExtra("email", email);
+                     IrUser.putExtra("contraseña", contraseñaDB);
                      startActivity(IrUser);
                  }
                  if(rol == 3) {
