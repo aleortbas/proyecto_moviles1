@@ -46,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LatLng alorsetar;
 
     private  String URL ="http://192.168.0.18:50/api/footbocking/coordenadas.php";
+    String id;
     RequestQueue requestQueue;
     Gson gson;
     Maklumat[] maklumats;
@@ -54,6 +55,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        id = getIntent().getExtras().getString("ID");
 
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -174,7 +177,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     };
 
     public void Editar(View view) {
-        Intent i = new Intent(MapsActivity.this, InfolocalActivity.class);
+        Intent i = new Intent(MapsActivity.this, updateUser.class);
+        i.putExtra("ID",id);
         startActivity(i);
     }
 }

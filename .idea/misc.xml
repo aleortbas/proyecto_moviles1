@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/drawable/boton_redondo.xml" value="0.22407407407407406" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/drawable/circle.xml" value="0.1296875" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/drawable/circle_border.xml" value="0.1296875" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/drawable/grad.xml" value="0.1296875" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/drawable/ic_settings.xml" value="0.2703125" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/drawable/ic_user.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_admin.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_administrar_canchas.xml" value="0.264" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_agregar_info_canchas.xml" value="0.25416666666666665" />
@@ -19,13 +24,13 @@
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_maps.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_maps2.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_numero_canchas.xml" value="0.264" />
-        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_registrar_loacales_canchas.xml" value="0.17543859649122806" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_registrar_loacales_canchas.xml" value="0.4083044982698962" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_registrar_usuario.xml" value="0.4" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_registrar_usuario_qr.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_registrar_usuario_telefono.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_seleccion_registro.xml" value="0.4" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_update_cancha.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_update_user.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/activity_update_user.xml" value="0.4031141868512111" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/infolocal.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/item_list.xml" value="0.4" />
         <entry key="..\:/Users/User/Documents/Moviles 1/proyecto-intergrador-android-master/app/src/main/res/layout/list_layout.xml" value="0.30442477876106194" />

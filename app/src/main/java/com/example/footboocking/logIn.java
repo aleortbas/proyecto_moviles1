@@ -75,8 +75,7 @@ import java.util.List;
                  }
                  if(rol == 2) {
                      Intent IrUser = new Intent(getApplicationContext(), MapsActivity.class);
-                     IrUser.putExtra("email", email);
-                     IrUser.putExtra("contraseña", contraseñaDB);
+                     IrUser.putExtra("ID", id);
                      startActivity(IrUser);
                  }
                  if(rol == 3) {
