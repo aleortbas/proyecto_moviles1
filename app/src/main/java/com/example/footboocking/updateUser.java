@@ -115,7 +115,7 @@ public class updateUser extends AppCompatActivity {
                         e.printStackTrace();
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
-                    }te
+                    }
 
 
                 }
