@@ -28,8 +28,8 @@ public class updateUser extends AppCompatActivity {
     EditText email;
     EditText clave;
     EditText telefono;
-    TextView tvName, tvLastName;
-    String id, foto, emailTxt, nombreTxt, apellidoTxt;
+    TextView tvName, tvLastName, rol, id_field;
+    String id, foto, emailTxt, nombreTxt, apellidoTxt, contraseñaTxt, telefonoTxt, rolTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,8 @@ public class updateUser extends AppCompatActivity {
         setContentView(R.layout.activity_update_user);
 
         id = getIntent().getExtras().getString("ID");
+        id_field=findViewById(R.id.userId);
+        rol=findViewById(R.id.rol);
         imageView=findViewById(R.id.userImg);
         nom=findViewById(R.id.nombre);
         email=findViewById(R.id.email);
@@ -44,6 +46,8 @@ public class updateUser extends AppCompatActivity {
         telefono=findViewById(R.id.telefono);
         tvName=findViewById(R.id.tv_name);
         tvLastName=findViewById(R.id.tv_lastName);
+
+        id_field.setText(id);
 
         new Thread(new Runnable() {
             @Override
@@ -59,6 +63,9 @@ public class updateUser extends AppCompatActivity {
                         emailTxt = rs.getString("email");
                         nombreTxt = rs.getString("nombre");
                         apellidoTxt = rs.getString("apellido");
+                        contraseñaTxt = rs.getString("clave");
+                        telefonoTxt = rs.getString("telefono");
+                        rolTxt = rs.getString("rol");
                     }
 
                     runOnUiThread(new Runnable() {
@@ -68,6 +75,9 @@ public class updateUser extends AppCompatActivity {
                             email.setText(emailTxt);
                             tvName.setText(nombreTxt);
                             tvLastName.setText(apellidoTxt);
+                            clave.setText(contraseñaTxt);
+                            telefono.setText(telefonoTxt);
+                            rol.setText(rolTxt);
                         }
                     });
 
@@ -109,7 +119,7 @@ public class updateUser extends AppCompatActivity {
                         Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
                         Statement stmt= con.createStatement();
                         //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
-                        stmt.executeUpdate("UPDATE usuario SET foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");
+                        stmt.executeUpdate("UPDATE usuario SET email='"+email.getText().toString()+"',telefono='"+telefono.getText().toString()+"',clave='"+clave.getText().toString()+"', foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");
 
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
