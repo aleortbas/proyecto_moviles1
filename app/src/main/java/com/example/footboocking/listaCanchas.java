@@ -143,7 +143,7 @@ public class listaCanchas extends AppCompatActivity implements com.example.footb
                                 int idLocal = jsonObject.getInt("id_Local");
                                 String disponible = jsonObject.getString("disponible");
                                 String nombre = jsonObject.getString("nombre");
-                                String image = jsonObject.getString("imagen");
+                                String image = jsonObject.getString("foto");
 
                                 Product product = new Product(id, idLocal, disponible, nombre, image);
                                 productList.add(product);

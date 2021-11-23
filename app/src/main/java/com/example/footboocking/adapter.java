@@ -6,7 +6,10 @@ package com.example.footboocking;
 * */
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,15 +57,21 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
     public void onBindViewHolder(@NonNull adpaterViewHolder holder, int position) {
         Product product = adapterList.get(position);
 
-        Glide.with(mCtx)
-                .load(product.getImage())
-                .into(holder.imageView);
+        holder.imageView.setImageBitmap(convert(product.getImage()));
+        holder.textViewTitle.setText("Id base de datos:" + String.valueOf(product.getId()));
+        holder.textViewDesc.setText("Estado de la cancha"+ product.getDisponible());
+        holder.textViewRating.setText("Id del local" + String.valueOf(product.getIdLocal()));
+        holder.textViewPrice.setText("Nombre" + String.valueOf(product.getNombre()));
 
-        holder.textViewTitle.setText(String.valueOf(product.getId()));
-        holder.textViewDesc.setText(product.getDisponible());
-        holder.textViewRating.setText(String.valueOf(product.getIdLocal()));
-        holder.textViewPrice.setText(String.valueOf(product.getNombre()));
+    }
+    public static Bitmap convert(String base64Str) throws IllegalArgumentException
+    {
+        byte[] decodedBytes = Base64.decode(
+                base64Str.substring(base64Str.indexOf(",")  + 1),
+                Base64.DEFAULT
+        );
 
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     }
 
     @Override
