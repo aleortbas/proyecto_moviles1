@@ -44,19 +44,17 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
-            android:text="Joey Tribbiani"
             android:textColor="@color/white"
             android:textSize="32sp" />
 
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/tv_lastName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_name"
             android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif"
-            android:text="new york, usa"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -68,12 +66,12 @@
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
             android:adjustViewBounds="true"
-            android:gravity="center"
-            android:textColor="@color/white"
             android:fontFamily="@font/font_awesome_solid"
-            android:textSize="20dp"
+            android:gravity="center"
+            android:onClick="tomarFoto"
             android:text="\uf302"
-            android:onClick="tomarFoto"/>
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
@@ -171,8 +169,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -183,7 +181,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="Nombre"
                     android:textColor="@color/red_delete"
                     android:textSize="13sp" />
 
@@ -212,7 +210,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone"
+                    android:text="Email"
                     android:textColor="@color/red_delete"
                     android:textSize="13sp" />
 
@@ -241,7 +239,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Twitter"
+                    android:text="Contraeña"
                     android:textColor="@color/red_delete"
                     android:textSize="13sp" />
 

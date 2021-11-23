@@ -96,7 +96,6 @@ public class RegistrarUsuario extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    // CRUD from here --------
     private boolean insertar() {
 
         String url = Constants.URL + "footbocking/add.php";

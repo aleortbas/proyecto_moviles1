@@ -11,6 +11,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
@@ -27,7 +28,8 @@ public class updateUser extends AppCompatActivity {
     EditText email;
     EditText clave;
     EditText telefono;
-    String id, foto, emailTxt;
+    TextView tvName, tvLastName;
+    String id, foto, emailTxt, nombreTxt, apellidoTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,23 +42,23 @@ public class updateUser extends AppCompatActivity {
         email=findViewById(R.id.email);
         clave=findViewById(R.id.Password);
         telefono=findViewById(R.id.telefono);
-
-
-        nom.setText(id);
+        tvName=findViewById(R.id.tv_name);
+        tvLastName=findViewById(R.id.tv_lastName);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                EditText nom=findViewById(R.id.nombre);
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:50/footbocking","root","");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
                     Statement stmt= con.createStatement();
-                    ResultSet rs=stmt.executeQuery("SELECT * FROM usuario WHERE id='"+id+"'");
+                    ResultSet rs=stmt.executeQuery("SELECT * FROM usuario WHERE id='"+id+"' ");
 
                     while(rs.next()){
-                        foto=rs.getString("foto");
-                        emailTxt=rs.getString("email");
+                        foto = rs.getString("foto");
+                        emailTxt = rs.getString("email");
+                        nombreTxt = rs.getString("nombre");
+                        apellidoTxt = rs.getString("apellido");
                     }
 
                     runOnUiThread(new Runnable() {
@@ -64,6 +66,8 @@ public class updateUser extends AppCompatActivity {
                         public void run() {
                             imageView.setImageBitmap(convert(foto));
                             email.setText(emailTxt);
+                            tvName.setText(nombreTxt);
+                            tvLastName.setText(apellidoTxt);
                         }
                     });
 
@@ -76,6 +80,7 @@ public class updateUser extends AppCompatActivity {
 
             }
         }).start();
+
 
     }
     public void tomarFoto(View v) {
@@ -91,31 +96,34 @@ public class updateUser extends AppCompatActivity {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
+
             imageView.setImageBitmap(imageBitmap);
+            System.out.println(""+ convert(imageBitmap));
 
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-
+                    EditText nom=findViewById(R.id.nombre);
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
-                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:50/footbocking","root","");
+                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
                         Statement stmt= con.createStatement();
-                        stmt.executeUpdate("UPDATE usuario SET nombre='"+nom.getText().toString()+"', email='"+email.getText().toString()+"', telefono'"+telefono.getText().toString()+"',clave='"+clave.getText().toString()+"',foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");
+                        //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
+                        stmt.executeUpdate("UPDATE usuario SET foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");
 
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     } catch (SQLException throwables) {
                         throwables.printStackTrace();
-                    }
+                    }te
 
 
                 }
             }).start();
 
+
         }
     }
-
     public static Bitmap convert(String base64Str) throws IllegalArgumentException
     {
         byte[] decodedBytes = Base64.decode(
