@@ -33,7 +33,7 @@ public class updateCancha extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     int id,id_local;
-    String nombre, disponible, imagen, idLocal;
+    String nombre, disponible, imagen, idLocal, idUser;
     TextView idBaseDatos,id_LocalDB;
     EditText disponibleTxt, nombreTxt;
     ImageView imageView;
@@ -46,6 +46,7 @@ public class updateCancha extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getIntExtra("id",0);
+        idUser = intent.getStringExtra("IDuser");
 
         idBaseDatos = findViewById(R.id.idBaseDatos);
         id_LocalDB = findViewById(R.id.id_Local);
@@ -177,6 +178,13 @@ public class updateCancha extends AppCompatActivity {
 
     public void atras(View view) {
         Intent IrUser = new Intent(getApplicationContext(), listaCanchas.class);
+        IrUser.putExtra("ID", idUser);
+        startActivity(IrUser);
+    }
+
+    public void Reservas(View view) {
+        Intent IrUser = new Intent(getApplicationContext(), consultaReservasAdmin.class);
+        IrUser.putExtra("ID", idBaseDatos.getText().toString());
         startActivity(IrUser);
     }
 

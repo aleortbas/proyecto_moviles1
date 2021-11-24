@@ -76,6 +76,20 @@
             android:textColor="@color/white"
             android:textSize="20dp" />
 
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="15dp"
+            android:adjustViewBounds="true"
+            android:fontFamily="@font/font_awesome_solid"
+            android:gravity="center"
+            android:onClick="Reservas"
+            android:text="\uf274"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
     </RelativeLayout>
 
 

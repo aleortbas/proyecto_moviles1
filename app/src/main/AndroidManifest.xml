@@ -27,6 +27,9 @@
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".consultaReservasAdmin"
+            android:exported="false" />
+        <activity
             android:name=".cambioRol"
             android:exported="false" />
         <activity

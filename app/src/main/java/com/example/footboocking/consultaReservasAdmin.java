@@ -3,7 +3,6 @@ package com.example.footboocking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -15,10 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class consultaReservas extends AppCompatActivity {
+public class consultaReservasAdmin extends AppCompatActivity {
 
-    String nombre,hora, hora_final, fecha, resultado="", dato;
-    int id, id_cancha;
+    String nombre,hora, hora_final, fecha, resultado="", dato, id;
+    int id_cancha;
     Spinner lista;
     Button boton, boton2, boton3, boton4, boton5, boton6;
     ArrayList<String> opciones2;
@@ -26,7 +25,9 @@ public class consultaReservas extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulta_reservas);
+        setContentView(R.layout.activity_consulta_reservas_admin);
+
+        id = getIntent().getExtras().getString("ID");
 
         boton = findViewById(R.id.button3);
         boton2 = findViewById(R.id.button4);
@@ -38,6 +39,8 @@ public class consultaReservas extends AppCompatActivity {
         opciones2 = new ArrayList<String>();
         opciones2.add("Consulte sus reservas");
 
+        boton.setText(id);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -45,7 +48,7 @@ public class consultaReservas extends AppCompatActivity {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
-                    String sql2 = "SELECT * FROM `reservas`";
+                    String sql2 = "SELECT * FROM `reservas` WHERE id_cancha='"+id+"'";
                     Statement stmt2 = con.createStatement();
                     ResultSet result2 = stmt2.executeQuery(sql2);
                     while(result2.next()){
@@ -85,24 +88,5 @@ public class consultaReservas extends AppCompatActivity {
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, opciones2);
         lista.setAdapter(adapter2);
 
-    }
-
-
-    public void buscar(View view) {
-        dato = lista.getSelectedItem().toString();
-        String[] parte =  dato.split(",");
-        String parte1 = parte[1];
-        String parte2 = parte[2];
-        String parte3 = parte[3];
-        String parte4 = parte[4];
-        String parte5 = parte[5];
-       String parte6 = parte[6];
-
-        boton.setText(parte1);
-        boton2.setText(parte2);
-        boton3.setText(parte3);
-        boton4.setText(parte4);
-        boton5.setText(parte5);
-        boton6.setText(parte6);
     }
 }

@@ -30,7 +30,7 @@ import java.util.List;
 
 public class listaCanchas extends AppCompatActivity implements com.example.footboocking.adapter.OnItemClickListener {
 
-    private static String id;
+    String id;
     String URL = null;
     String id_canchas;
 
@@ -171,6 +171,7 @@ public class listaCanchas extends AppCompatActivity implements com.example.footb
         Intent edit = new Intent(this, updateCancha.class);
         Product clickItem = productList.get(position);
 
+        edit.putExtra("IDuser", id);
         edit.putExtra("id",clickItem.getId());
         edit.putExtra("id_local",clickItem.getIdLocal());
         edit.putExtra("nombre",clickItem.getNombre());
