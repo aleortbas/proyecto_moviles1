@@ -27,6 +27,12 @@
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".cambio"
+            android:exported="false" />
+        <activity
+            android:name=".horasDisponibles"
+            android:exported="false" />
+        <activity
             android:name=".consultaReservasAdmin"
             android:exported="false" />
         <activity

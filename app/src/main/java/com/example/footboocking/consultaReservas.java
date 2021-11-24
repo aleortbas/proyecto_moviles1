@@ -2,6 +2,7 @@ package com.example.footboocking;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 
 public class consultaReservas extends AppCompatActivity {
 
-    String nombre,hora, hora_final, fecha, resultado="", dato;
+    String nombre,hora, hora_final, fecha, resultado="", dato, idUSer;
     int id, id_cancha;
     Spinner lista;
     Button boton, boton2, boton3, boton4, boton5, boton6;
@@ -28,6 +29,9 @@ public class consultaReservas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulta_reservas);
 
+        Intent intent = getIntent();
+        idUSer = intent.getStringExtra("id");
+
         boton = findViewById(R.id.button3);
         boton2 = findViewById(R.id.button4);
         boton3 = findViewById(R.id.button5);
@@ -35,6 +39,7 @@ public class consultaReservas extends AppCompatActivity {
         boton5 = findViewById(R.id.button7);
         boton6 = findViewById(R.id.button8);
         lista = findViewById(R.id.spinner);
+
         opciones2 = new ArrayList<String>();
         opciones2.add("Consulte sus reservas");
 
@@ -45,7 +50,7 @@ public class consultaReservas extends AppCompatActivity {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
-                    String sql2 = "SELECT * FROM `reservas`";
+                    String sql2 = "SELECT * FROM `reservas` WHERE id_usuario='"+idUSer+"'";
                     Statement stmt2 = con.createStatement();
                     ResultSet result2 = stmt2.executeQuery(sql2);
                     while(result2.next()){

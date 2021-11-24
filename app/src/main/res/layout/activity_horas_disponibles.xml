@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:weightSum="12"
     android:orientation="vertical"
-    tools:context=".formatoReserva">
+    tools:context=".horasDisponibles">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,6 @@
         android:weightSum="12"
         android:orientation="vertical"
         >
-
 
         <TextView
             android:id="@+id/textView7"
@@ -26,6 +25,7 @@
             android:gravity="center"
             android:text="Ingrese los datos necesarios y consulte el horario antes de registrar la reserva." />
 
+
         <EditText
             android:id="@+id/idCanchaHora"
             android:layout_width="340dp"
@@ -34,44 +34,6 @@
             android:gravity="center"
             android:hint="ID: "
             android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/nombreReserva"
-            android:layout_width="340dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:hint="Nombre"
-            android:inputType="textPersonName" />
-
-        <LinearLayout
-            android:layout_width="340dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:weightSum="2"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            >
-            <EditText
-                android:id="@+id/fecha"
-                android:layout_width="280dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:hint="Fecha"
-                android:inputType="text" />
-
-            <Button
-                android:id="@+id/calendarButton"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
-                android:layout_gravity="bottom"
-                android:layout_weight="1"
-                android:onClick="openDatePicker"
-                android:fontFamily="@font/font_awesome_solid"
-                android:text="\uf784" />
-
-        </LinearLayout>
 
 
         <LinearLayout
@@ -92,7 +54,7 @@
                 android:inputType="text" />
 
             <Button
-                android:id="@+id/timeButton"
+                android:id="@+id/calendarButton"
                 android:layout_width="40dp"
                 android:layout_height="50dp"
                 android:layout_gravity="bottom"
@@ -101,16 +63,18 @@
                 android:fontFamily="@font/font_awesome_solid"
                 android:text="\uf017" />
 
+
         </LinearLayout>
 
-            <EditText
-                android:id="@+id/horaFinal"
-                android:layout_width="340dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:hint="Hora Final"
-                android:inputType="text" />
+        <EditText
+            android:id="@+id/horaFinal"
+            android:layout_width="340dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:hint="Hora Final"
+            android:inputType="text" />
+
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="70dp"
@@ -128,27 +92,19 @@
                 android:text="Registrarse" />
 
             <Button
-                android:id="@+id/consultar"
+                android:id="@+id/atras"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:backgroundTint="@color/white"
                 android:fontFamily="@font/font_awesome"
-                android:onClick="consultar"
-                android:textColor="@color/black"
-                android:text="consultar" />
-
-            <Button
-                android:id="@+id/buttonQr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/font_awesome"
                 android:onClick="atras"
-                android:text="Atras"
-                />
+                android:textColor="@color/black"
+                android:text="atras" />
+
 
         </RadioGroup>
+
 
     </LinearLayout>
 

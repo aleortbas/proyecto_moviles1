@@ -60,7 +60,7 @@ public class formatoReserva extends AppCompatActivity {
         timeButton = findViewById(R.id.timeButton);
         dateButton = findViewById(R.id.calendarButton);
 
-        fecha   .setText(getTodayDate());
+        fecha.setText(getTodayDate());
 
         consultar.setOnClickListener(new View.OnClickListener() {
             @Override

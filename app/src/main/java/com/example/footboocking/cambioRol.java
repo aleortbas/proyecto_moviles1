@@ -143,4 +143,10 @@ public class cambioRol extends AppCompatActivity {
         consulta.putExtra("id",id);
         startActivity(consulta);
     }
+
+    public void atras(View view) {
+        Intent consulta = new Intent(this, updateUser.class);
+        consulta.putExtra("ID",id);
+        startActivity(consulta);
+    }
 }

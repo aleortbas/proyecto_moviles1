@@ -188,6 +188,12 @@ public class updateCancha extends AppCompatActivity {
         startActivity(IrUser);
     }
 
+    public void horas(View view) {
+        Intent IrHora = new Intent(getApplicationContext(), horasDisponibles.class);
+        IrHora.putExtra("ID", idBaseDatos.getText().toString());
+        startActivity(IrHora);
+    }
+
     class Eliminar extends AsyncTask<String, String, String> {
         private Activity context;
 

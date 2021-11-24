@@ -122,6 +122,7 @@
             android:backgroundTint="#0A676060"
             android:textColor="@color/black"
             android:text="atras"
+            android:onClick="atras"
             android:fontFamily="@font/font_awesome" />
 
     </RadioGroup>

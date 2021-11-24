@@ -94,7 +94,12 @@ public class Admin extends AppCompatActivity implements com.example.footboocking
 
     @Override
     public void OnItemClick(int position) {
-        new Cambiar(Admin.this).execute();
+        Intent edit = new Intent(this, cambio.class);
+        solicitud clickItem = productList.get(position);
+        edit.putExtra("id",clickItem.getId_usuario());
+        edit.putExtra("nombre",clickItem.getNombre());
+        edit.putExtra("cedula",clickItem.getTipo_identificacion());
+        startActivity(edit);
     }
 
     private boolean cambiar(int posi) {
@@ -108,13 +113,12 @@ public class Admin extends AppCompatActivity implements com.example.footboocking
         //DATOS
         List<NameValuePair> nameValuePairs;
         nameValuePairs = new ArrayList<NameValuePair>(7);
-        nameValuePairs.add(new BasicNameValuePair("id", id.trim()));
+        nameValuePairs.add(new BasicNameValuePair("id_local", id.toString().trim()));
 
 
         boolean response = APIHandler.POST(url, nameValuePairs); // enviamos los datos por POST al Webservice PHP
         return response;
     }
-
 
     class Cambiar extends AsyncTask<String, String, String> {
         private Activity context;
