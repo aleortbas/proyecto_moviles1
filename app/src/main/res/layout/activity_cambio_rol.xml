@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="12"
+    android:orientation="vertical"
+    tools:context=".cambioRol">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="¿Quieres cambiar de rol?"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Crea una solicitud"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:text="Con la solicitud se te permite tener tu negocio en linea"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/userImg"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="9dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:padding="3dp"
+        android:scaleType="centerInside" />
+
+    <EditText
+        android:id="@+id/nombreSol"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Nombre"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/tipoId"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Tipo Identificacion"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/numeroId"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Numero Identificacion"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/camaraComercio"
+        android:layout_width="340dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="Camara de comercio"
+        android:inputType="textEmailAddress" />
+
+
+
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Creando esta cuenta usted acepta nuestros terminos y condicciones " />
+
+
+    <RadioGroup
+        android:layout_width="340dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/black"
+            android:onClick="tomarFoto"
+            android:fontFamily="@font/font_awesome"
+            android:text="Registrar y foto" />
+
+        <Button
+            android:id="@+id/buttonQr"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#0A676060"
+            android:textColor="@color/black"
+            android:text="atras"
+            android:fontFamily="@font/font_awesome" />
+
+    </RadioGroup>
+
+
+</LinearLayout>

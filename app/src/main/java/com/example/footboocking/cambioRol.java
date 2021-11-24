@@ -11,7 +11,6 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
@@ -20,34 +19,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class updateUser extends AppCompatActivity {
+public class cambioRol extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     ImageView imageView;
-    EditText nom;
-    EditText email;
-    EditText clave;
-    EditText telefono;
-    TextView tvName, tvLastName, rol, id_field;
-    String id, foto, emailTxt, nombreTxt, apellidoTxt, contraseñaTxt, telefonoTxt, rolTxt;
+    EditText nombre,tipoId,numeroId,camaraComercio;
+    String nombreTxt, tipoIdTxt, numeroIdTxt, comercioTxt,id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_user);
+        setContentView(R.layout.activity_cambio_rol);
 
-        id = getIntent().getExtras().getString("ID");
-        id_field=findViewById(R.id.userId);
-        rol=findViewById(R.id.rol);
-        imageView=findViewById(R.id.userImg);
-        nom=findViewById(R.id.nombre);
-        email=findViewById(R.id.email);
-        clave=findViewById(R.id.Password);
-        telefono=findViewById(R.id.telefono);
-        tvName=findViewById(R.id.tv_name);
-        tvLastName=findViewById(R.id.tv_lastName);
+        id = getIntent().getExtras().getString("id");
+        nombre = findViewById(R.id.nombreSol);
+        tipoId = findViewById(R.id.tipoId);
+        numeroId = findViewById(R.id.numeroId);
+        camaraComercio = findViewById(R.id.camaraComercio);
+        imageView = findViewById(R.id.userImg);
 
-        id_field.setText(id);
+        nombreTxt = getIntent().getExtras().getString("nombre");
+        nombre.setText(nombreTxt);
 
         new Thread(new Runnable() {
             @Override
@@ -59,25 +51,13 @@ public class updateUser extends AppCompatActivity {
                     ResultSet rs=stmt.executeQuery("SELECT * FROM usuario WHERE id='"+id+"' ");
 
                     while(rs.next()){
-                        foto = rs.getString("foto");
-                        emailTxt = rs.getString("email");
-                        nombreTxt = rs.getString("nombre");
-                        apellidoTxt = rs.getString("apellido");
-                        contraseñaTxt = rs.getString("clave");
-                        telefonoTxt = rs.getString("telefono");
-                        rolTxt = rs.getString("rol");
+
                     }
 
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            imageView.setImageBitmap(convert(foto));
-                            email.setText(emailTxt);
-                            tvName.setText(nombreTxt);
-                            tvLastName.setText(apellidoTxt);
-                            clave.setText(contraseñaTxt);
-                            telefono.setText(telefonoTxt);
-                            rol.setText(rolTxt);
+
                         }
                     });
 
@@ -91,8 +71,8 @@ public class updateUser extends AppCompatActivity {
             }
         }).start();
 
-
     }
+
     public void tomarFoto(View v) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -119,7 +99,8 @@ public class updateUser extends AppCompatActivity {
                         Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
                         Statement stmt= con.createStatement();
                         //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
-                        stmt.executeUpdate("UPDATE usuario SET email='"+email.getText().toString()+"',telefono='"+telefono.getText().toString()+"',clave='"+clave.getText().toString()+"', foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");
+                        stmt.executeUpdate("INSERT INTO solicitud VALUES(NULL, '"+nombre.getText().toString()+"', '"+tipoId.getText().toString()+"', '"+numeroId.getText().toString()+"','"+camaraComercio.getText().toString()+"','"+id+"', '1', '"+convert(imageBitmap)+"') ");
+
 
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
@@ -160,7 +141,6 @@ public class updateUser extends AppCompatActivity {
     public void solicitud(View view) {
         Intent consulta = new Intent(this, cambioRol.class);
         consulta.putExtra("id",id);
-        consulta.putExtra("nombre",nombreTxt);
         startActivity(consulta);
     }
 }
