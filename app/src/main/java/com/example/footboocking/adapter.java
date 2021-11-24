@@ -58,10 +58,10 @@ public class adapter extends RecyclerView.Adapter<adapter.adpaterViewHolder>{
         Product product = adapterList.get(position);
 
         holder.imageView.setImageBitmap(convert(product.getImage()));
-        holder.textViewTitle.setText("Id base de datos:" + String.valueOf(product.getId()));
-        holder.textViewDesc.setText("Estado de la cancha"+ product.getDisponible());
-        holder.textViewRating.setText("Id del local" + String.valueOf(product.getIdLocal()));
-        holder.textViewPrice.setText("Nombre" + String.valueOf(product.getNombre()));
+        holder.textViewTitle.setText("Id base de datos: " + String.valueOf(product.getId()));
+        holder.textViewDesc.setText("Nombre: "+ product.getDisponible());
+        holder.textViewRating.setText("Id del local: " + String.valueOf(product.getIdLocal()));
+        holder.textViewPrice.setText("Estado: " + String.valueOf(product.getNombre()));
 
     }
     public static Bitmap convert(String base64Str) throws IllegalArgumentException

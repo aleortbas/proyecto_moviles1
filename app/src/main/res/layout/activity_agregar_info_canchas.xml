@@ -34,8 +34,7 @@
             android:layout_width="230dp"
             android:layout_height="250dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/cancha" />
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/textView3"
@@ -73,21 +72,14 @@
             android:hint="Nombre"
             />
 
-        <EditText
-            android:id="@+id/imagen_Link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="LINK imagen"
-            />
-
             <Button
                 android:id="@+id/buttonAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/black"
-                android:text="Editar" />
+                android:onClick="tomarFoto"
+                android:text="Agregar" />
 
 
     </LinearLayout>
