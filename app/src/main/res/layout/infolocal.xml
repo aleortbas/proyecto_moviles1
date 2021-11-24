@@ -40,6 +40,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCanchas"
             android:layout_width="match_parent"
+            android:orientation="horizontal"
             android:layout_height="480dp"
             ></androidx.recyclerview.widget.RecyclerView>
 

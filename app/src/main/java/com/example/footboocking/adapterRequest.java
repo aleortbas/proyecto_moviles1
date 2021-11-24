@@ -6,7 +6,10 @@ package com.example.footboocking;
  * */
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,10 +55,8 @@ public class adapterRequest extends RecyclerView.Adapter<adapterRequest.adpaterV
     public void onBindViewHolder(@NonNull adpaterViewHolder holder, int position) {
         solicitud product = adapterList.get(position);
 
-        Glide.with(mCtx)
-                .load(product.getFoto())
-                .into(holder.imageView);
 
+        holder.imageView.setImageBitmap(convert(product.getFoto()));
         holder.textViewTitle.setText(String.valueOf(product.getNombre()));
         holder.textViewDesc.setText(product.getTipo_identificacion());
         holder.textViewRating.setText(String.valueOf(product.getIdentificacion()));
@@ -67,7 +68,15 @@ public class adapterRequest extends RecyclerView.Adapter<adapterRequest.adpaterV
         }
 
     }
+    public static Bitmap convert(String base64Str) throws IllegalArgumentException
+    {
+        byte[] decodedBytes = Base64.decode(
+                base64Str.substring(base64Str.indexOf(",")  + 1),
+                Base64.DEFAULT
+        );
 
+        return BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+    }
     @Override
     public int getItemCount() {
         return adapterList.size();

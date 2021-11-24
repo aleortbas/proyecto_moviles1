@@ -40,7 +40,7 @@ public class InfolocalActivity extends AppCompatActivity implements com.example.
 
         recyclerView = findViewById(R.id.recyclerViewCanchas);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
         loadRequest();
     }
@@ -66,7 +66,7 @@ public class InfolocalActivity extends AppCompatActivity implements com.example.
                                 int idLocal = jsonObject.getInt("id_Local");
                                 String disponible = jsonObject.getString("disponible");
                                 String nombre = jsonObject.getString("nombre");
-                                String image = jsonObject.getString("imagen");
+                                String image = jsonObject.getString("foto");
 
                                 Product product = new Product(id, idLocal, disponible, nombre, image);
                                 canchaList.add(product);
