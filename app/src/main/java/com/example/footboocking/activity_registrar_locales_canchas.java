@@ -51,6 +51,7 @@ public class activity_registrar_locales_canchas extends AppCompatActivity implem
         id = getIntent().getStringExtra("ID");
         id_canchas = getIntent().getStringExtra("Id_canchas");
 
+
         button = findViewById(R.id.buttonLocal);
         administrar = findViewById(R.id.buttonAdmin);
 

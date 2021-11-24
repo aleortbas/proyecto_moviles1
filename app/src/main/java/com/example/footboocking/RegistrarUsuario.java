@@ -81,7 +81,7 @@ public class RegistrarUsuario extends AppCompatActivity implements View.OnClickL
                     EditText nom=findViewById(R.id.nombre);
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
-                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                         Statement stmt= con.createStatement();
                         //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
                        stmt.executeUpdate("INSERT INTO usuario VALUES(NULL, '"+nombreTx.getText().toString()+"', '"+emailTx.getText().toString()+"', '"+telefonotx.getText().toString()+"', '"+apellidoTx.getText().toString()+"', '"+contraseñaTx.getText().toString()+"', '2', '"+convert(imageBitmap)+"')");

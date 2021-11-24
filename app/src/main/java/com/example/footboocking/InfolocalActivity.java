@@ -23,8 +23,9 @@ import java.util.List;
 
 public class InfolocalActivity extends AppCompatActivity implements com.example.footboocking.adapterCanchas.OnItemClickListener {
 
-    String id;
+    int id;
     String URL = null;
+    String id_canchas2, idUser;
 
     RecyclerView recyclerView;
     adapterCanchas adapterCanchas;
@@ -37,7 +38,8 @@ public class InfolocalActivity extends AppCompatActivity implements com.example.
         setContentView(R.layout.infolocal);
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("id");
+        id = intent.getIntExtra("id_local", 0);
+        idUser = intent.getStringExtra("id");
 
         canchaList = new ArrayList<>();
 
@@ -50,7 +52,6 @@ public class InfolocalActivity extends AppCompatActivity implements com.example.
 
     private void loadRequest() {
 
-        String id_canchas2;
         id_canchas2 = getIntent().getExtras().getString("ID");
 
         URL = "http://192.168.0.18:50/api/footbocking/get-numCanchas-by-id.php?id=" + id_canchas2;
@@ -96,7 +97,7 @@ public class InfolocalActivity extends AppCompatActivity implements com.example.
     public void OnItemClick(int position) {
         Intent edit = new Intent(this, formatoReserva.class);
         Product clickItem = canchaList.get(position);
-        edit.putExtra("id", id);
+        edit.putExtra("id",idUser);
         edit.putExtra("id_local",clickItem.getId());
         startActivity(edit);
     }

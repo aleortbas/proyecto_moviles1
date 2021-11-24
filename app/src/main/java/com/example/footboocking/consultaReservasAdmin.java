@@ -3,6 +3,7 @@ package com.example.footboocking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -47,7 +48,7 @@ public class consultaReservasAdmin extends AppCompatActivity {
 
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                     String sql2 = "SELECT * FROM `reservas` WHERE id_cancha='"+id+"'";
                     Statement stmt2 = con.createStatement();
                     ResultSet result2 = stmt2.executeQuery(sql2);
@@ -89,4 +90,22 @@ public class consultaReservasAdmin extends AppCompatActivity {
         lista.setAdapter(adapter2);
 
     }
+    public void buscar(View view) {
+        dato = lista.getSelectedItem().toString();
+        String[] parte =  dato.split(",");
+        String parte1 = parte[1];
+        String parte2 = parte[2];
+        String parte3 = parte[3];
+        String parte4 = parte[4];
+        String parte5 = parte[5];
+        String parte6 = parte[6];
+
+        boton.setText(parte1);
+        boton2.setText(parte2);
+        boton3.setText(parte3);
+        boton4.setText(parte4);
+        boton5.setText(parte5);
+        boton6.setText(parte6);
+    }
+
 }

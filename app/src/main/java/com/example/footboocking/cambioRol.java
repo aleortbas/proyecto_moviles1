@@ -46,7 +46,7 @@ public class cambioRol extends AppCompatActivity {
             public void run() {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                     Statement stmt= con.createStatement();
                     ResultSet rs=stmt.executeQuery("SELECT * FROM usuario WHERE id='"+id+"' ");
 
@@ -96,7 +96,8 @@ public class cambioRol extends AppCompatActivity {
                     EditText nom=findViewById(R.id.nombre);
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
-                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
+
                         Statement stmt= con.createStatement();
                         //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
                         stmt.executeUpdate("INSERT INTO solicitud VALUES(NULL, '"+nombre.getText().toString()+"', '"+tipoId.getText().toString()+"', '"+numeroId.getText().toString()+"','"+camaraComercio.getText().toString()+"','"+id+"', '1', '"+convert(imageBitmap)+"') ");

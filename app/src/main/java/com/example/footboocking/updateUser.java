@@ -54,7 +54,7 @@ public class updateUser extends AppCompatActivity {
             public void run() {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                     Statement stmt= con.createStatement();
                     ResultSet rs=stmt.executeQuery("SELECT * FROM usuario WHERE id='"+id+"' ");
 
@@ -116,7 +116,7 @@ public class updateUser extends AppCompatActivity {
                     EditText nom=findViewById(R.id.nombre);
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
-                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                         Statement stmt= con.createStatement();
                         //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
                         stmt.executeUpdate("UPDATE usuario SET email='"+email.getText().toString()+"',telefono='"+telefono.getText().toString()+"',clave='"+clave.getText().toString()+"', foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");

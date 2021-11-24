@@ -70,7 +70,7 @@ public class updateCancha extends AppCompatActivity {
             public void run() {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                     Statement stmt= con.createStatement();
                     ResultSet rs=stmt.executeQuery("SELECT * FROM numero_canchas WHERE id='"+id+"' ");
 
@@ -126,7 +126,7 @@ public class updateCancha extends AppCompatActivity {
                     EditText nom=findViewById(R.id.nombre);
                     try {
                         Class.forName("com.mysql.jdbc.Driver");
-                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                        Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                         Statement stmt= con.createStatement();
                         //stmt.executeUpdate("INSERT INTO prueba VALUES(null, 'Juan','"+convert(imageBitmap)+"')");
                         stmt.executeUpdate("UPDATE numero_canchas SET disponible='"+disponibleTxt.getText().toString()+"',nombre='"+nombreTxt.getText().toString()+"' ,foto='"+convert(imageBitmap)+"' WHERE id='"+id+"'");

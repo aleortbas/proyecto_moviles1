@@ -49,7 +49,7 @@ public class consultaReservas extends AppCompatActivity {
 
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
-                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","root","123456");
+                    Connection con= DriverManager.getConnection("jdbc:mysql://192.168.0.18:3306/footbocking","roo","123456");
                     String sql2 = "SELECT * FROM `reservas` WHERE id_usuario='"+idUSer+"'";
                     Statement stmt2 = con.createStatement();
                     ResultSet result2 = stmt2.executeQuery(sql2);

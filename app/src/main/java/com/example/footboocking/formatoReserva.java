@@ -60,7 +60,7 @@ public class formatoReserva extends AppCompatActivity {
         timeButton = findViewById(R.id.timeButton);
         dateButton = findViewById(R.id.calendarButton);
 
-        fecha.setText(getTodayDate());
+        fecha   .setText(getTodayDate());
 
         consultar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,6 +190,12 @@ public class formatoReserva extends AppCompatActivity {
         return null;
     }
 
+    public void atras(View view) {
+        Intent IrUser = new Intent(getApplicationContext(), InfolocalActivity.class);
+        IrUser.putExtra("ID", id);
+        startActivity(IrUser);
+    }
+
     class Consultar extends AsyncTask<String, String, String> {
         private Activity context;
 
@@ -209,13 +215,13 @@ public class formatoReserva extends AppCompatActivity {
                             }
                         });
                     }
-                else
-                    context.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(context, "Horario no disponible", Toast.LENGTH_LONG).show();
-                        }
-                    });
+                    else
+                        context.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(context, "Horario no disponible", Toast.LENGTH_LONG).show();
+                            }
+                        });
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (IOException e) {
