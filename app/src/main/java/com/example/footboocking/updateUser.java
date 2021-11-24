@@ -154,6 +154,7 @@ public class updateUser extends AppCompatActivity {
 
     public void consultaReservas(View view) {
         Intent consulta = new Intent(this, consultaReservas.class);
+        consulta.putExtra("id",id);
         startActivity(consulta);
     }
 

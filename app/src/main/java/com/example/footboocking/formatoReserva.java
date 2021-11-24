@@ -34,6 +34,7 @@ public class formatoReserva extends AppCompatActivity {
     EditText idCancha, nombreReserva, fecha, horaInicio, horaFinal;
     Button registrar, atras, consultar, timeButton, dateButton;
     int id, horas, minutos;
+    String idUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class formatoReserva extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getIntExtra("id_local", 0);
+        idUser = intent.getStringExtra("id");
 
         idCancha = findViewById(R.id.idCanchaHora);
         nombreReserva = findViewById(R.id.nombreReserva);
@@ -235,6 +237,7 @@ public class formatoReserva extends AppCompatActivity {
         nameValuePairs.add(new BasicNameValuePair("hora", horaInicio.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("hora_final", horaFinal.getText().toString().trim()));
         nameValuePairs.add(new BasicNameValuePair("fecha", fecha.getText().toString().trim()));
+        nameValuePairs.add(new BasicNameValuePair("idUser", idUser.trim()));
 
         boolean response = APIHandler.POST(url, nameValuePairs);
 

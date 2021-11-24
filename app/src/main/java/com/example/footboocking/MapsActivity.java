@@ -105,6 +105,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String markeTitle = marker.getSnippet();
 
                 Intent i = new Intent(MapsActivity.this, InfolocalActivity.class);
+                i.putExtra("id",id);
                 i.putExtra("ID",markeTitle);
                 startActivity(i);
 
