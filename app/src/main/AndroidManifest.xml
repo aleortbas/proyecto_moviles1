@@ -13,7 +13,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -24,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FootBoocking"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".consultaReservas"
+            android:exported="false" />
         <activity
             android:name=".updateUser"
             android:exported="false" />

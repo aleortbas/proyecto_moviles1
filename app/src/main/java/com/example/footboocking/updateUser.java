@@ -151,4 +151,9 @@ public class updateUser extends AppCompatActivity {
 
         return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
     }
+
+    public void consultaReservas(View view) {
+        Intent consulta = new Intent(this, consultaReservas.class);
+        startActivity(consulta);
+    }
 }
